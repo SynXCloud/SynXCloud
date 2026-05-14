@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://synxcloud.com/sitemap.xml
+Host: synxcloud.com

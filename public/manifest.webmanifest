@@ -1,0 +1,21 @@
+{
+  "name": "SynXCloud",
+  "short_name": "SynXCloud",
+  "description": "Enterprise cloud infrastructure, AI-powered digital transformation, and scalable software solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#001F3F",
+  "theme_color": "#001F3F",
+  "icons": [
+    {
+      "src": "/officialLogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/officialLogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
