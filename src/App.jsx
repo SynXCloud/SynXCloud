@@ -262,9 +262,9 @@ function Icon({ name, className = '', size = 24 }) {
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" />
       </svg>
     ),
-    github: (
-      <svg className={`icon ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.02 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12.01 12.01 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+    facebook: (
+      <svg className={`icon ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
       </svg>
     ),
     arrowLeft: (
@@ -965,7 +965,7 @@ function App() {
 
                   <div className="social-row" style={{ marginTop: 'auto', paddingTop: '2rem' }}>
                     <a href="https://www.linkedin.com/company/synxcloud/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><Icon name="linkedin" size={18} /></a>
-                    <a href="https://github.com/SynXCloud" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub"><Icon name="github" size={18} /></a>
+                    <a href="https://www.facebook.com/people/Synxcloud/61589674294047/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><Icon name="facebook" size={18} /></a>
                     <a href="https://synxcloud.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Website"><Icon name="globe" size={18} /></a>
                   </div>
                 </div>
@@ -1037,7 +1037,7 @@ function App() {
               </p>
               <div className="social-row">
                 <a href="https://www.linkedin.com/company/synxcloud/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><Icon name="linkedin" size={16} /></a>
-                <a href="https://github.com/SynXCloud" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub"><Icon name="github" size={16} /></a>
+                <a href="https://www.facebook.com/people/Synxcloud/61589674294047/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><Icon name="facebook" size={16} /></a>
                 <a href="https://synxcloud.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Website"><Icon name="globe" size={16} /></a>
               </div>
             </div>
