@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://synxcloud.com/sitemap.xml
-Host: synxcloud.com
+Sitemap: https://synxcloud.in/sitemap.xml
+Host: synxcloud.in
