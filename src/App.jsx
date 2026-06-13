@@ -48,21 +48,21 @@ const TRINITY = [
   {
     icon: 'build',
     title: 'Build',
-    desc: 'From zero to production. We architect resilient cloud-native foundations with infrastructure-as-code, CI/CD pipelines, and microservices that scale from day one.',
-    tag: 'Foundation',
+    desc: 'We develop pixel-perfect web applications, native mobile apps, and robust backend systems tailored precisely to your business needs.',
+    tag: 'Development',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop',
   },
   {
     icon: 'innovate',
     title: 'Innovate',
-    desc: 'AI-driven automation, edge computing, and custom tech stacks tailored to your domain. We don\'t follow trends — we engineer competitive advantages.',
+    desc: 'Transform your operations with AI automation, smart chatbots, and custom integrations that give you a competitive edge.',
     tag: 'Intelligence',
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1000&auto=format&fit=crop',
   },
   {
     icon: 'grow',
     title: 'Grow',
-    desc: 'Auto-scaling infrastructure, performance optimization, and strategic SEO engineering. Your platform expands seamlessly as your business accelerates.',
+    desc: 'From e-commerce platforms to scalable learning management systems (LMS), we build digital assets that drive revenue and growth.',
     tag: 'Scalability',
     image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000&auto=format&fit=crop',
   },
@@ -70,35 +70,35 @@ const TRINITY = [
 
 const SERVICES = [
   {
-    icon: 'cloud',
-    title: 'Cloud Architecture & Migration',
-    desc: 'Seamlessly transition legacy workloads to AWS, Azure, or GCP with zero-downtime strategies and automated cost governance.',
-    tag: 'Cloud-Native',
-    features: ['Multi-cloud infrastructure design', 'Automated DR & compliance', 'FinOps & cost optimization'],
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop',
-  },
-  {
     icon: 'code',
-    title: 'Full-Stack Product Engineering',
-    desc: 'Engineering high-performance web and mobile ecosystems using modern tech stacks tailored for rapid scale and user delight.',
-    tag: 'Digital Products',
-    features: ['High-velocity MVP builds', 'Resilient microservices', 'Intelligent UX engineering'],
+    title: 'Web & Mobile App Development',
+    desc: 'High-performance websites and mobile applications built with modern tech stacks like React, Next.js, and React Native.',
+    tag: 'Development',
+    features: ['Custom Web Applications', 'iOS & Android Mobile Apps', 'Responsive Landing Pages'],
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
   },
   {
+    icon: 'cloud',
+    title: 'Custom Software & E-Commerce',
+    desc: 'Scalable backend systems, complex software solutions, and high-converting e-commerce platforms tailored to your niche.',
+    tag: 'Solutions',
+    features: ['E-Commerce Stores', 'Learning Platforms (LMS)', 'Custom ERP/CRM Systems'],
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
     icon: 'innovate',
-    title: 'AI & Intelligent Automation',
-    desc: 'Harness the power of Generative AI and LLMs to automate complex workflows and create predictive customer experiences.',
+    title: 'AI Automation & Chatbots',
+    desc: 'Harness the power of AI to automate repetitive tasks, qualify leads with smart chatbots, and improve customer experience.',
     tag: 'AI-First',
-    features: ['Custom LLM & Agent integration', 'RAG-based knowledge systems', 'Operational AI automation'],
+    features: ['Intelligent Chatbots', 'Workflow Automation', 'AI Integrations'],
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
   },
   {
     icon: 'scale',
-    title: 'Scalability & DevOps Consulting',
-    desc: 'Hardening your systems to handle millions of users through battle-tested DevOps, SRE practices, and performance tuning.',
-    tag: 'Platform Stability',
-    features: ['Kubernetes & Docker orchestration', 'CI/CD pipeline engineering', 'High-availability audits'],
+    title: 'Software Maintenance & Management',
+    desc: 'We don\'t just build; we maintain. Ensuring your software is always secure, updated, and running at peak performance.',
+    tag: 'Support',
+    features: ['Ongoing Maintenance', 'Performance Optimization', 'Security Updates'],
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop',
   },
 ]
@@ -119,10 +119,10 @@ const TECH_STACK = [
 ]
 
 const STATS = [
-  { value: '20+', label: 'Projects Delivered' },
-  { value: '32%', label: 'Infrastructure Cost Saved' },
-  { value: '99.99%', label: 'Production Uptime' },
-  { value: '60d', label: 'Average Delivery Time' },
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '99%', label: 'Client Satisfaction' },
+  { value: '24/7', label: 'Support & Maintenance' },
+  { value: '10+', label: 'Years Combined Experience' },
 ]
 
 const TRUSTED_BY = [
@@ -136,24 +136,24 @@ const TRUSTED_BY = [
 
 const CASE_STUDIES = [
   {
-    title: 'SaaS platform modernization',
-    outcome: 'Delivered 3x faster deployment cycles and cut cloud costs by 28%.',
-    description: 'Re-platformed a customer onboarding product to AWS containers with automated CI/CD, observability, and security guardrails.',
-    tag: 'SaaS Growth',
+    title: 'E-Commerce Platform Launch',
+    outcome: 'Increased online sales by 150% and improved mobile conversion rates.',
+    description: 'Designed and developed a custom high-performance e-commerce store with seamless payment gateway integration.',
+    tag: 'E-Commerce',
     image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop',
   },
   {
-    title: 'Enterprise cloud migration',
-    outcome: 'Migrated legacy workloads with zero downtime and a 40% reduction in monthly spend.',
-    description: 'Designed a secure, scalable multi-region cloud architecture for a financial services team.',
-    tag: 'Cloud Strategy',
+    title: 'AI Customer Support Bot',
+    outcome: 'Reduced manual support tickets by 60% with instant automated responses.',
+    description: 'Integrated a custom AI chatbot trained on the client\'s knowledge base to handle 24/7 customer inquiries.',
+    tag: 'AI Automation',
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1000&auto=format&fit=crop',
   },
   {
-    title: 'AI-enabled automation',
-    outcome: 'Launched predictive operations workflows that reduced manual overhead by 50%.',
-    description: 'Built intelligent automation for infrastructure provisioning and incident response across hybrid environments.',
-    tag: 'AI Operations',
+    title: 'Custom Learning Platform (LMS)',
+    outcome: 'Successfully onboarded 5,000+ students within the first month of launch.',
+    description: 'Built a scalable online learning platform featuring video courses, progress tracking, and automated certifications.',
+    tag: 'EdTech',
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop',
   },
 ]
@@ -161,23 +161,23 @@ const CASE_STUDIES = [
 const PROCESS = [
   {
     step: '01',
-    title: 'Discovery & Strategy',
-    desc: 'We deep-dive into your technical debt, business goals, and scaling bottlenecks to architect a high-impact roadmap.',
+    title: 'Discovery & Planning',
+    desc: 'We start by understanding your business goals, target audience, and specific requirements to outline the perfect solution.',
   },
   {
     step: '02',
-    title: 'Architectural Design',
-    desc: 'Engineering resilient, cloud-native systems with security-first principles and infrastructure-as-code foundations.',
+    title: 'UI/UX Design',
+    desc: 'Creating intuitive, modern, and engaging user interfaces that provide an exceptional experience across all devices.',
   },
   {
     step: '03',
-    title: 'Precision Execution',
-    desc: 'Rapid development and deployment cycles with continuous integration, automated testing, and zero-downtime releases.',
+    title: 'Development & Testing',
+    desc: 'Writing clean, scalable code and conducting rigorous testing to ensure your software is bug-free and performant.',
   },
   {
     step: '04',
-    title: 'Scale & Optimize',
-    desc: 'Continuous performance monitoring and iterative optimization to ensure your platform grows as fast as your business.',
+    title: 'Launch & Support',
+    desc: 'Deploying your project seamlessly and providing ongoing maintenance to keep everything running smoothly.',
   },
 ]
 
@@ -708,19 +708,19 @@ function App() {
 
           <div className="container">
             <div className="hero-content">
-              <span className="eyebrow">Build · Innovate · Grow</span>
+              <span className="eyebrow">Your Freelance Development Partner</span>
               <h1>
-                Scaling Your<br />
-                <span className="gradient-text">Digital Future</span><br />
-                With Confidence
+                Building Digital<br />
+                <span className="gradient-text">Experiences</span><br />
+                That Convert
               </h1>
               <p>
-                Enterprise cloud infrastructure, AI automation, and scalable software engineered to help fast-growth companies launch, secure, and scale.
+                Expert web development, mobile apps, custom software, e-commerce, and AI automation tailored to scale your business.
               </p>
               <ul className="hero-benefits">
-                <li>Launch secure cloud platforms in under 60 days</li>
-                <li>Reduce infrastructure costs while improving uptime</li>
-                <li>Automate releases, monitoring, and operations for faster growth</li>
+                <li>Custom Web & Mobile App Development</li>
+                <li>E-Commerce & Learning Platforms (LMS)</li>
+                <li>AI Automation & Smart Chatbots</li>
               </ul>
               <div className="hero-buttons">
                 <a href="#contact" className="btn btn-gradient btn-lg">
@@ -780,8 +780,8 @@ function App() {
           <div className="container">
             <div className="section-header reveal">
               <span className="eyebrow">What We Deliver</span>
-              <h2>Strategic engineering services built for scale</h2>
-              <p>Cloud, product, and AI delivery tuned for ambitious teams that need strong outcomes, speed, and security.</p>
+              <h2>Comprehensive digital solutions for your business</h2>
+              <p>From stunning landing pages to complex custom software and AI integrations, we deliver quality at every step.</p>
             </div>
 
             <ServiceShowcase services={SERVICES} />
@@ -793,8 +793,8 @@ function App() {
           <div className="container">
             <div className="section-header reveal">
               <span className="eyebrow">Why SynXCloud</span>
-              <h2>Senior delivery teams for high-growth product and cloud initiatives</h2>
-              <p>We combine cloud architecture, automation, and product engineering to deliver measurable business results with clarity and pace.</p>
+              <h2>Dedicated freelance experts committed to your success</h2>
+              <p>We combine modern design, robust engineering, and AI automation to deliver measurable business results.</p>
             </div>
             <div className="trinity-grid">
               {TRINITY.map((item, i) => (
