@@ -708,7 +708,7 @@ function App() {
 
           <div className="container">
             <div className="hero-content">
-              {/* <span className="eyebrow">Your Freelance Development Partner</span> */}
+              <span className="eyebrow">Your Freelance Development Partner</span>
               <h1>
                 Building Digital<br />
                 <span className="gradient-text">Experiences</span><br />
