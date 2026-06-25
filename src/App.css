@@ -2379,11 +2379,14 @@ img {
   background: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
   z-index: 1000;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
   animation: fadeIn 0.25s ease-out;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-card {
@@ -2396,6 +2399,7 @@ img {
   box-shadow: var(--shadow-xl);
   position: relative;
   animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin: auto;
 }
 
 .modal-close-btn {
