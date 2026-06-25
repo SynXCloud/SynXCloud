@@ -248,6 +248,9 @@ function App() {
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
   ]
+  const halfTech = Math.ceil(TECH_STACK.length / 2)
+  const techRow1 = TECH_STACK.slice(0, halfTech)
+  const techRow2 = TECH_STACK.slice(halfTech)
 
   // Partners Data
   const PARTNERS = [
@@ -873,7 +876,8 @@ function App() {
             </div>
 
             <div className="tech-logos-wrapper reveal">
-              <div className="tech-scroll-container">
+              {/* Desktop view */}
+              <div className="tech-scroll-container desktop-only">
                 {TECH_STACK.map((t, idx) => (
                   <div key={idx} className="tech-item-card">
                     <img src={t.logo} alt={t.name} className="tech-logo-img" />
@@ -881,6 +885,54 @@ function App() {
                   </div>
                 ))}
               </div>
+
+              {/* Mobile view: two rows of sliding marquees */}
+              <div className="tech-mobile-marquee mobile-only">
+                {/* Row 1: slide left to right */}
+                <div className="marquee-row marquee-left-to-right">
+                  <div className="marquee-track">
+                    <div className="marquee-group">
+                      {techRow1.map((t, idx) => (
+                        <div key={`r1-g1-${idx}`} className="tech-item-card">
+                          <img src={t.logo} alt={t.name} className="tech-logo-img" />
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="marquee-group" aria-hidden="true">
+                      {techRow1.map((t, idx) => (
+                        <div key={`r1-g2-${idx}`} className="tech-item-card">
+                          <img src={t.logo} alt={t.name} className="tech-logo-img" />
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Row 2: slide right to left */}
+                <div className="marquee-row marquee-right-to-left">
+                  <div className="marquee-track">
+                    <div className="marquee-group">
+                      {techRow2.map((t, idx) => (
+                        <div key={`r2-g1-${idx}`} className="tech-item-card">
+                          <img src={t.logo} alt={t.name} className="tech-logo-img" />
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="marquee-group" aria-hidden="true">
+                      {techRow2.map((t, idx) => (
+                        <div key={`r2-g2-${idx}`} className="tech-item-card">
+                          <img src={t.logo} alt={t.name} className="tech-logo-img" />
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <a href="#contact" className="tech-view-all-link">
                 View all technologies
                 <Icon name="arrowRight" size={16} />

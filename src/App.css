@@ -1647,6 +1647,96 @@ img {
   gap: 1rem;
 }
 
+/* Responsive visibility helper classes */
+.desktop-only {
+  display: flex !important;
+}
+
+.mobile-only {
+  display: none !important;
+}
+
+/* Mobile sliding marquee styles */
+.tech-mobile-marquee {
+  display: none;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+/* Fade effects at the edges of the scrolling area */
+.tech-mobile-marquee::before,
+.tech-mobile-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tech-mobile-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-light) 0%, transparent 100%);
+}
+
+.tech-mobile-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-light) 0%, transparent 100%);
+}
+
+.marquee-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem; /* Acts as the gap between the duplicate loops */
+  flex-shrink: 0;
+}
+
+.marquee-left-to-right .marquee-track {
+  animation: techScrollLeftToRight 20s linear infinite;
+}
+
+.marquee-right-to-left .marquee-track {
+  animation: techScrollRightToLeft 20s linear infinite;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes techScrollLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes techScrollRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .tech-item-card {
   background: var(--bg-white);
   border: 1.5px solid var(--border-color);
@@ -2662,6 +2752,14 @@ img {
 
   .tech-scroll-container {
     justify-content: center;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
   }
 
   .tech-view-all-link {
