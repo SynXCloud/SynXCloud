@@ -127,6 +127,11 @@ function Icon({ name, className = '', size = 20, style = {} }) {
         <circle cx="4" cy="4" r="2" />
       </svg>
     ),
+    facebook: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+      </svg>
+    ),
     twitter: (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>
         <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
@@ -196,30 +201,37 @@ function App() {
     {
       id: 'dev',
       tag: 'Development',
-      title: 'Web & Mobile App Development',
-      desc: 'High-performance websites and mobile apps using React, Next.js and React Native.',
-      features: ['Custom Web Applications', 'iOS & Android Mobile Apps', 'Responsive & Modern UI'],
-    },
-    {
-      id: 'support',
-      tag: 'Support',
-      title: 'Software Maintenance & Management',
-      desc: 'We don\'t just build; we maintain. Ensuring your software is always secure, updated & optimized.',
-      features: ['Ongoing Maintenance', 'Performance Optimization', 'Security Updates'],
-    },
-    {
-      id: 'solutions',
-      tag: 'Solutions',
-      title: 'Custom Software & E-Commerce',
-      desc: 'Scalable systems, custom software and e-commerce solutions tailored to your business niche.',
-      features: ['E-Commerce Stores', 'Learning Platforms (LMS)', 'Custom ERP/CRM Systems'],
+      title: 'Web, Mobile & Custom Software',
+      desc: 'High-performance custom websites, tailored software solutions, and mobile apps built using React, Next.js, and React Native.',
+      features: ['Custom Web & Mobile Apps', 'Bespoke Software & SaaS', 'Responsive & Modern UI'],
     },
     {
       id: 'ai',
       tag: 'AI Automation',
       title: 'AI Automation & Chatbots',
-      desc: 'Leverage AI to automate workflows, qualify leads and enhance customer experience.',
+      desc: 'Leverage AI to automate workflows, qualify leads and enhance customer experience globally.',
       features: ['Intelligent Chatbots', 'Workflow Automation', 'AI Integrations'],
+    },
+    {
+      id: 'cloud-devops',
+      tag: 'Cloud Architecture',
+      title: 'AWS/GCP Cloud & DevOps',
+      desc: 'High availability, auto-scaling, and secure serverless setups built for cross-continental low latency applications.',
+      features: ['Infrastructure as Code (Terraform)', 'CI/CD Deployment Pipelines', 'Auto-scaling & Disaster Recovery'],
+    },
+    {
+      id: 'uiux-design',
+      tag: 'Product Design',
+      title: 'UI/UX & Product Strategy',
+      desc: 'Stunning user interfaces and seamless user journeys crafted to elevate your brand globally.',
+      features: ['Figma Wireframes & Prototypes', 'Design Systems for Brands', 'User Research & Strategy'],
+    },
+    {
+      id: 'support',
+      tag: 'Support',
+      title: 'Software Maintenance & Management',
+      desc: 'We don\'t just build; we maintain. Ensuring your software systems are always secure, updated & optimized for global clients.',
+      features: ['Ongoing Maintenance & Support', 'Performance Optimization', 'Security Audits & Updates'],
     },
   ]
 
@@ -520,7 +532,7 @@ function App() {
 
   return (
     <div className="site-shell">
-      
+
       {/* ===== HEADER ===== */}
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-wrap">
@@ -594,7 +606,7 @@ function App() {
       </div>
 
       <main id="main-content">
-        
+
         {/* ===== HERO SECTION ===== */}
         <section className="hero" id="home">
           <div className="hero-radial-glows" />
@@ -609,7 +621,7 @@ function App() {
               <p className="hero-desc">
                 We help ambitious companies build, launch and scale powerful digital products with modern technology, AI automation and cloud solutions.
               </p>
-              
+
               <div className="hero-buttons">
                 <button onClick={() => openModal('project')} className="btn btn-primary btn-lg">
                   Start Your Project
@@ -666,12 +678,12 @@ function App() {
 
                 {/* HTML Screen Overlays */}
                 <div className="html-screen-laptop">
-                  <video 
-                    src="/vid.mp4" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
+                  <video
+                    src="/vid.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                     className="lap-screen-video"
                   />
                 </div>
@@ -784,17 +796,12 @@ function App() {
                           <div className="g-phone"><div className="g-screen"><span className="g-dot" /></div></div>
                         </div>
                       )}
+
                       {s.id === 'support' && (
                         <div className="support-graphic">
                           <div className="g-shield">🛡️</div>
                           <div className="g-gear gear-1">⚙️</div>
                           <div className="g-gear gear-2">⚙️</div>
-                        </div>
-                      )}
-                      {s.id === 'solutions' && (
-                        <div className="solutions-graphic">
-                          <div className="g-cart">🛒</div>
-                          <div className="g-store"><div className="g-bar" /><div className="g-bar" /></div>
                         </div>
                       )}
                       {s.id === 'ai' && (
@@ -804,13 +811,28 @@ function App() {
                           <div className="g-bubble bubble-r">✦</div>
                         </div>
                       )}
+
+                      {s.id === 'cloud-devops' && (
+                        <div className="cloud-devops-graphic">
+                          <div className="g-cloud">☁️</div>
+                          <div className="g-db">🗄️</div>
+                          <div className="g-nodes">⚡</div>
+                        </div>
+                      )}
+                      {s.id === 'uiux-design' && (
+                        <div className="uiux-design-graphic">
+                          <div className="g-palette">🎨</div>
+                          <div className="g-brush">🖌️</div>
+                          <div className="g-spark">✦</div>
+                        </div>
+                      )}
                     </div>
 
                     <div className="service-card-body">
                       <span className="service-badge">{s.tag}</span>
                       <h3>{s.title}</h3>
                       <p className="service-desc">{s.desc}</p>
-                      
+
                       <ul className="service-bullets">
                         {s.features.map((f, i) => (
                           <li key={i}>
@@ -850,7 +872,7 @@ function App() {
               <span className="eyebrow">WHY CHOOSE SYNXCLOUD</span>
               <h2>Committed to Your Success at Every Step</h2>
             </div>
-            
+
             <div className="why-choose-benefits-grid">
               {BENEFITS.map((b, idx) => (
                 <div key={idx} className="benefit-card reveal">
@@ -986,19 +1008,19 @@ function App() {
                       <img src={p.image} alt={p.title} className="project-img" />
                       <span className="project-tag-badge">{p.tag}</span>
                     </div>
-                    
+
                     <div className="project-body-grid">
                       <div className="project-left-col">
                         <h3>{p.title}</h3>
                         <p className="project-desc">{p.desc}</p>
-                        
+
                         <div className="project-stack-tags">
                           {p.stack.map((s, i) => (
                             <span key={i} className="stack-tag">{s}</span>
                           ))}
                         </div>
                       </div>
-                      
+
                       <div className="project-divider-line" />
 
                       <div className="project-right-col">
@@ -1034,7 +1056,7 @@ function App() {
             <div className="testimonials-left-col reveal">
               <span className="eyebrow">CLIENT SUCCESS STORIES</span>
               <h2>Loved by Founders and Teams</h2>
-              
+
               <div className="testimonial-controls">
                 <button
                   onClick={() => setTestimonialIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
@@ -1065,9 +1087,9 @@ function App() {
                         <span key={i} className="star-gold">★</span>
                       ))}
                     </div>
-                    
+
                     <p className="testimonial-quote">"{t.quote}"</p>
-                    
+
                     <div className="testimonial-author">
                       <img src={t.avatar} alt={t.name} className="author-avatar" />
                       <div className="author-details">
@@ -1078,7 +1100,7 @@ function App() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="testimonial-dot-indicators">
                 {TESTIMONIALS.map((_, idx) => (
                   <button
@@ -1144,9 +1166,8 @@ function App() {
             </p>
             <div className="footer-socials">
               <a href="https://www.linkedin.com/company/synxcloud/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-link"><Icon name="linkedin" size={16} /></a>
-              <a href="https://www.facebook.com/people/Synxcloud/61589674294047/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-link"><Icon name="instagram" size={16} /></a>
-              <a href="https://synxcloud.in" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="social-link"><Icon name="twitter" size={16} /></a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-link"><Icon name="github" size={16} /></a>
+              <a href="https://www.facebook.com/people/Synxcloud/61589674294047/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-link"><Icon name="facebook" size={16} /></a>
+              <a href="https://www.instagram.com/synxcloud/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-link"><Icon name="instagram" size={16} /></a>
             </div>
           </div>
 
@@ -1207,7 +1228,7 @@ function App() {
               </div>
               <div className="contact-item">
                 <span className="contact-icon">📍</span>
-                <span>Hooghly, West Bengal 712403</span>
+                <span>Hooghly, West Bengal, 712403</span>
               </div>
             </div>
           </div>
@@ -1237,7 +1258,7 @@ function App() {
             <button className="modal-close-btn" onClick={closeModal} aria-label="Close modal">
               <Icon name="close" size={18} />
             </button>
-            
+
             <div className="modal-header">
               {modalType === 'discovery' && <h2>Book a Discovery Call</h2>}
               {modalType === 'strategy' && <h2>Book a Strategy Call</h2>}
@@ -1254,7 +1275,7 @@ function App() {
             ) : (
               <form ref={formRef} onSubmit={handleFormSubmit} className="modal-form">
                 <input type="hidden" name="subject" value={`SynXCloud - ${modalType.toUpperCase()} Request`} />
-                
+
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="user_name">Full Name</label>
