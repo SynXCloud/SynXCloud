@@ -422,7 +422,7 @@ function App() {
   const closeModal = () => {
     setIsModalOpen(false)
     setFormStatus('')
-    document.body.style.overflow = 'unset'
+    document.body.style.overflow = ''
   }
 
   // EmailJS submission
