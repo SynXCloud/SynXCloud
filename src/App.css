@@ -3756,8 +3756,41 @@ img {
     font-size: 0.9rem;
   }
 
+  .service-mockup-graphic {
+    height: 90px;
+  }
+
   .service-card-body {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .service-badge {
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .service-card-body h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+  }
+
+  .service-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    font-size: 0.85rem;
+  }
+
+  .service-bullets {
+    margin-bottom: 1.25rem;
+    gap: 0.4rem;
+  }
+  
+  .service-bullets li {
+    font-size: 0.85rem;
   }
 
   /* Why Choose */

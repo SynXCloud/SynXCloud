@@ -627,7 +627,7 @@ function App() {
                   Start Your Project
                   <Icon name="arrowRight" size={16} />
                 </button>
-                <button onClick={() => openModal('strategy')} className="btn btn-outline btn-lg">
+                <button onClick={() => openModal('strategy')} className="btn btn-primary btn-lg" style={{ boxShadow: '0 8px 30px rgba(0, 82, 255, 0.4)' }}>
                   Book a Strategy Call
                   <Icon name="phone" size={16} />
                 </button>
@@ -636,8 +636,16 @@ function App() {
               {/* Trust & Features Panel */}
               <div className="hero-trust-panel">
                 {/* Social Proof */}
-                <div className="hero-social-proof">
-                  <div className="avatar-stack" onClick={() => openModal('clients')} style={{ cursor: 'pointer', transition: 'transform 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} title="View Client Profiles">
+                <div className="hero-social-proof" onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('process');
+                  if (el) {
+                    const offset = 80;
+                    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
+                }} style={{ cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.03)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} title="View Client Reviews">
+                  <div className="avatar-stack">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="User 1" />
                     <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=100&auto=format&fit=crop" alt="User 2" />
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="User 3" />
