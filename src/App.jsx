@@ -190,10 +190,10 @@ function App() {
 
   // Stats Data
   const STATS = [
-    { value: '50+', label: 'Projects Delivered', icon: 'folder' },
+    { value: '10+', label: 'Projects Delivered', icon: 'folder' },
     { value: '99%', label: 'Client Satisfaction', icon: 'target' },
     { value: '24/7', label: 'Support & Maintenance', icon: 'shield' },
-    { value: '10+', label: 'Years Combined Experience', icon: 'award' },
+    { value: '3+', label: 'Years Combined Experience', icon: 'award' },
   ]
 
   // Services Data
@@ -267,7 +267,7 @@ function App() {
   // Partners Data
   const PARTNERS = [
     {
-      name: 'Fortis',
+      name: 'AWS Partner',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="partner-svg">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -275,7 +275,7 @@ function App() {
       )
     },
     {
-      name: 'NovaFin',
+      name: 'Google Cloud',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="partner-svg">
           <polygon points="12 2 2 22 22 22" />
@@ -283,7 +283,7 @@ function App() {
       )
     },
     {
-      name: 'Astra Retail',
+      name: 'Vercel',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="partner-svg">
           <circle cx="12" cy="12" r="10" />
@@ -292,7 +292,7 @@ function App() {
       )
     },
     {
-      name: 'BlueWave',
+      name: 'DigitalOcean',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="partner-svg">
           <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -300,7 +300,7 @@ function App() {
       )
     },
     {
-      name: 'Verto Systems',
+      name: 'Stripe',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="partner-svg">
           <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9z" />
@@ -309,7 +309,7 @@ function App() {
       )
     },
     {
-      name: 'QuantumApps',
+      name: 'MongoDB',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="partner-svg">
           <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
@@ -392,21 +392,21 @@ function App() {
   // Testimonials
   const TESTIMONIALS = [
     {
-      quote: "SynXCloud delivered a clean, modern website with fast turnaround and strong communication. Highly recommended!",
-      name: "Amit Verma",
-      role: "Start-up Founder",
+      quote: "SynXCloud completely transformed our infrastructure. Their expertise in AWS saved us 40% in monthly cloud costs while significantly improving application performance.",
+      name: "Rahul Chatterjee",
+      role: "CTO, TechCorp India",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop"
     },
     {
-      quote: "Their team understood our requirements perfectly and delivered a high-performing solution beyond our expectations.",
-      name: "Neha Kapoor",
-      role: "Retail Business Owner",
+      quote: "The custom ERP solution they built streamlined our entire supply chain. Their team's dedication, agile process, and technical proficiency are simply unmatched.",
+      name: "Priya Sharma",
+      role: "Operations Director, Logistics Pro",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
     },
     {
-      quote: "Professional, reliable and skilled team. They helped us launch our platform successfully and on time.",
-      name: "Rohit Malhotra",
-      role: "Consultant",
+      quote: "We needed a scalable LMS platform and SynXCloud delivered beyond expectations. Their UI/UX design and robust backend handled our 10k+ user base flawlessly.",
+      name: "Vikram Singh",
+      role: "Founder, EduTech Solutions",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop"
     }
   ]
@@ -637,7 +637,7 @@ function App() {
               <div className="hero-trust-panel">
                 {/* Social Proof */}
                 <div className="hero-social-proof">
-                  <div className="avatar-stack">
+                  <div className="avatar-stack" onClick={() => openModal('clients')} style={{ cursor: 'pointer', transition: 'transform 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} title="View Client Profiles">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="User 1" />
                     <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=100&auto=format&fit=crop" alt="User 2" />
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="User 3" />
@@ -648,7 +648,7 @@ function App() {
                         <span key={i} className="star-gold">★</span>
                       ))}
                     </div>
-                    <p className="proof-text">Trusted by 50+ businesses worldwide</p>
+                    <p className="proof-text">Trusted by 10+ businesses worldwide</p>
                   </div>
                 </div>
 
@@ -756,22 +756,6 @@ function App() {
                 <p className="services-subtitle">From idea to launch and beyond, we build scalable, secure and high-performing digital products.</p>
               </div>
               <div className="services-controls-wrap">
-                <div className="service-controls">
-                  <button
-                    onClick={prevService}
-                    className="control-btn"
-                    aria-label="Previous service"
-                  >
-                    <Icon name="arrowLeft" size={18} />
-                  </button>
-                  <button
-                    onClick={nextService}
-                    className="control-btn"
-                    aria-label="Next service"
-                  >
-                    <Icon name="arrowRight" size={18} />
-                  </button>
-                </div>
                 <a href="#portfolio" className="services-link">
                   View all services
                   <Icon name="arrowRight" size={16} />
@@ -779,77 +763,87 @@ function App() {
               </div>
             </div>
 
-            <div className="services-carousel-container">
-              <div
-                className="services-track"
-                style={{
-                  transform: `translateX(calc(-${serviceIndex} * (100% + var(--grid-gap)) / var(--visible-items)))`
-                }}
-              >
-                {SERVICES.map((s) => (
-                  <div key={s.id} className="service-card reveal">
-                    {/* Custom CSS/HTML Illustration mockup at top */}
-                    <div className={`service-mockup-graphic ${s.id}`}>
-                      {s.id === 'dev' && (
-                        <div className="dev-graphic">
-                          <div className="g-laptop"><div className="g-screen"><span className="g-line" /><span className="g-line" /><span className="g-line" /></div></div>
-                          <div className="g-phone"><div className="g-screen"><span className="g-dot" /></div></div>
-                        </div>
-                      )}
+            <div className="carousel-wrapper" style={{ position: 'relative' }}>
+              <button onClick={prevService} className="carousel-nav-btn prev-btn" aria-label="Previous service">
+                <Icon name="arrowLeft" size={20} />
+              </button>
 
-                      {s.id === 'support' && (
-                        <div className="support-graphic">
-                          <div className="g-shield">🛡️</div>
-                          <div className="g-gear gear-1">⚙️</div>
-                          <div className="g-gear gear-2">⚙️</div>
-                        </div>
-                      )}
-                      {s.id === 'ai' && (
-                        <div className="ai-graphic">
-                          <div className="g-robot">🤖</div>
-                          <div className="g-bubble bubble-l">Hi!</div>
-                          <div className="g-bubble bubble-r">✦</div>
-                        </div>
-                      )}
+              <div className="services-carousel-container">
+                <div
+                  className="services-track"
+                  style={{
+                    transform: `translateX(calc(-${serviceIndex} * (100% + var(--grid-gap)) / var(--visible-items)))`
+                  }}
+                >
+                  {SERVICES.map((s) => (
+                    <div key={s.id} className="service-card reveal">
+                      {/* Custom CSS/HTML Illustration mockup at top */}
+                      <div className={`service-mockup-graphic ${s.id}`}>
+                        {s.id === 'dev' && (
+                          <div className="dev-graphic">
+                            <div className="g-laptop"><div className="g-screen"><span className="g-line" /><span className="g-line" /><span className="g-line" /></div></div>
+                            <div className="g-phone"><div className="g-screen"><span className="g-dot" /></div></div>
+                          </div>
+                        )}
 
-                      {s.id === 'cloud-devops' && (
-                        <div className="cloud-devops-graphic">
-                          <div className="g-cloud">☁️</div>
-                          <div className="g-db">🗄️</div>
-                          <div className="g-nodes">⚡</div>
-                        </div>
-                      )}
-                      {s.id === 'uiux-design' && (
-                        <div className="uiux-design-graphic">
-                          <div className="g-palette">🎨</div>
-                          <div className="g-brush">🖌️</div>
-                          <div className="g-spark">✦</div>
-                        </div>
-                      )}
+                        {s.id === 'support' && (
+                          <div className="support-graphic">
+                            <div className="g-shield">🛡️</div>
+                            <div className="g-gear gear-1">⚙️</div>
+                            <div className="g-gear gear-2">⚙️</div>
+                          </div>
+                        )}
+                        {s.id === 'ai' && (
+                          <div className="ai-graphic">
+                            <div className="g-robot">🤖</div>
+                            <div className="g-bubble bubble-l">Hi!</div>
+                            <div className="g-bubble bubble-r">✦</div>
+                          </div>
+                        )}
+
+                        {s.id === 'cloud-devops' && (
+                          <div className="cloud-devops-graphic">
+                            <div className="g-cloud">☁️</div>
+                            <div className="g-db">🗄️</div>
+                            <div className="g-nodes">⚡</div>
+                          </div>
+                        )}
+                        {s.id === 'uiux-design' && (
+                          <div className="uiux-design-graphic">
+                            <div className="g-palette">🎨</div>
+                            <div className="g-brush">🖌️</div>
+                            <div className="g-spark">✦</div>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="service-card-body">
+                        <span className="service-badge">{s.tag}</span>
+                        <h3>{s.title}</h3>
+                        <p className="service-desc">{s.desc}</p>
+
+                        <ul className="service-bullets">
+                          {s.features.map((f, i) => (
+                            <li key={i}>
+                              <span className="bullet-dash">-</span>
+                              {f}
+                            </li>
+                          ))}
+                        </ul>
+
+                        <button onClick={() => openModal('project')} className="btn-explore-solution">
+                          Explore Solution
+                          <Icon name="arrowRight" size={14} />
+                        </button>
+                      </div>
                     </div>
-
-                    <div className="service-card-body">
-                      <span className="service-badge">{s.tag}</span>
-                      <h3>{s.title}</h3>
-                      <p className="service-desc">{s.desc}</p>
-
-                      <ul className="service-bullets">
-                        {s.features.map((f, i) => (
-                          <li key={i}>
-                            <span className="bullet-dash">-</span>
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <button onClick={() => openModal('project')} className="btn-explore-solution">
-                        Explore Solution
-                        <Icon name="arrowRight" size={14} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
+              <button onClick={nextService} className="carousel-nav-btn next-btn" aria-label="Next service">
+                <Icon name="arrowRight" size={20} />
+              </button>
             </div>
 
             <div className="service-dot-indicators">
@@ -972,22 +966,6 @@ function App() {
                 <h2>Delivering Impact Through Innovation</h2>
               </div>
               <div className="projects-controls-wrap">
-                <div className="project-controls">
-                  <button
-                    onClick={prevProject}
-                    className="control-btn"
-                    aria-label="Previous project"
-                  >
-                    <Icon name="arrowLeft" size={18} />
-                  </button>
-                  <button
-                    onClick={nextProject}
-                    className="control-btn"
-                    aria-label="Next project"
-                  >
-                    <Icon name="arrowRight" size={18} />
-                  </button>
-                </div>
                 <a href="#contact" className="projects-view-all">
                   View all case studies
                   <Icon name="arrowRight" size={16} />
@@ -995,46 +973,56 @@ function App() {
               </div>
             </div>
 
-            <div className="projects-carousel-container">
-              <div
-                className="projects-track"
-                style={{
-                  transform: `translateX(calc(-${projectIndex} * (100% + var(--grid-gap)) / var(--visible-items)))`
-                }}
-              >
-                {PROJECTS.map((p, idx) => (
-                  <div key={idx} className="project-card reveal">
-                    <div className="project-image-wrapper">
-                      <img src={p.image} alt={p.title} className="project-img" />
-                      <span className="project-tag-badge">{p.tag}</span>
-                    </div>
+            <div className="carousel-wrapper" style={{ position: 'relative' }}>
+              <button onClick={prevProject} className="carousel-nav-btn prev-btn" aria-label="Previous project">
+                <Icon name="arrowLeft" size={20} />
+              </button>
 
-                    <div className="project-body-grid">
-                      <div className="project-left-col">
-                        <h3>{p.title}</h3>
-                        <p className="project-desc">{p.desc}</p>
+              <div className="projects-carousel-container">
+                <div
+                  className="projects-track"
+                  style={{
+                    transform: `translateX(calc(-${projectIndex} * (100% + var(--grid-gap)) / var(--visible-items)))`
+                  }}
+                >
+                  {PROJECTS.map((p, idx) => (
+                    <div key={idx} className="project-card reveal">
+                      <div className="project-image-wrapper">
+                        <img src={p.image} alt={p.title} className="project-img" />
+                        <span className="project-tag-badge">{p.tag}</span>
+                      </div>
 
-                        <div className="project-stack-tags">
-                          {p.stack.map((s, i) => (
-                            <span key={i} className="stack-tag">{s}</span>
+                      <div className="project-body-grid">
+                        <div className="project-left-col">
+                          <h3>{p.title}</h3>
+                          <p className="project-desc">{p.desc}</p>
+
+                          <div className="project-stack-tags">
+                            {p.stack.map((s, i) => (
+                              <span key={i} className="stack-tag">{s}</span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="project-divider-line" />
+
+                        <div className="project-right-col">
+                          {p.stats.map((s, i) => (
+                            <div key={i} className="project-stat-block">
+                              <span className="proj-stat-val">{s.val}</span>
+                              <span className="proj-stat-lbl">{s.lbl}</span>
+                            </div>
                           ))}
                         </div>
                       </div>
-
-                      <div className="project-divider-line" />
-
-                      <div className="project-right-col">
-                        {p.stats.map((s, i) => (
-                          <div key={i} className="project-stat-block">
-                            <span className="proj-stat-val">{s.val}</span>
-                            <span className="proj-stat-lbl">{s.lbl}</span>
-                          </div>
-                        ))}
-                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
+              <button onClick={nextProject} className="carousel-nav-btn next-btn" aria-label="Next project">
+                <Icon name="arrowRight" size={20} />
+              </button>
             </div>
 
             <div className="project-dot-indicators">
@@ -1263,10 +1251,32 @@ function App() {
               {modalType === 'discovery' && <h2>Book a Discovery Call</h2>}
               {modalType === 'strategy' && <h2>Book a Strategy Call</h2>}
               {modalType === 'project' && <h2>Start Your Project</h2>}
-              <p>Fill out the form below and our technical leads will reach out to you within 12 hours.</p>
+              {modalType === 'clients' && <h2>Our Esteemed Clients</h2>}
+              {modalType !== 'clients' ? (
+                <p>Fill out the form below and our technical leads will reach out to you within 12 hours.</p>
+              ) : (
+                <p>Meet some of the industry leaders who trust SynXCloud for their digital transformation.</p>
+              )}
             </div>
 
-            {formStatus === 'success' ? (
+            {modalType === 'clients' ? (
+              <div className="client-profiles-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem' }}>
+                {TESTIMONIALS.map((t, idx) => (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'var(--surface-color)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                    <img src={t.avatar} alt={t.name} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }} />
+                    <div>
+                      <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-color)' }}>{t.name}</h4>
+                      <p style={{ margin: '0', fontSize: '0.85rem', color: 'var(--text-muted)' }}>{t.role}</p>
+                      <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.2rem' }}>
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <span key={i} className="star-gold" style={{ fontSize: '12px' }}>★</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : formStatus === 'success' ? (
               <div className="modal-success-screen">
                 <div className="success-icon-check">✓</div>
                 <h3>Message Sent Successfully!</h3>
@@ -1279,18 +1289,18 @@ function App() {
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="user_name">Full Name</label>
-                    <input type="text" id="user_name" name="user_name" placeholder="John Doe" required />
+                    <input type="text" id="user_name" name="user_name" placeholder="Rahul Sharma" required />
                   </div>
                   <div className="form-group">
                     <label htmlFor="user_email">Work Email</label>
-                    <input type="email" id="user_email" name="user_email" placeholder="john@company.com" required />
+                    <input type="email" id="user_email" name="user_email" placeholder="rahul@example.com" required />
                   </div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="phone">Phone Number (Optional)</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" />
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="modal_type_display">Inquiry Type</label>
