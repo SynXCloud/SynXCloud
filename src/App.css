@@ -117,8 +117,8 @@ img {
 
 .btn-primary:hover {
   background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 82, 255, 0.3);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 82, 255, 0.4);
 }
 
 .btn-outline {
@@ -131,7 +131,8 @@ img {
   border-color: var(--primary-color);
   color: var(--primary-color);
   background: var(--primary-light);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .btn-sm {
@@ -188,8 +189,9 @@ img {
 /* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -325,10 +327,29 @@ img {
   color: var(--text-muted);
   padding: 0.5rem 0.85rem;
   border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: calc(100% - 1.7rem);
 }
 
 .nav-link:hover,
@@ -1288,9 +1309,9 @@ img {
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--primary-glow);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0, 31, 63, 0.08);
+  border-color: rgba(0, 82, 255, 0.2);
 }
 
 /* Service illustrations */
@@ -2099,9 +2120,9 @@ img {
 }
 
 .benefit-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary-glow);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(0, 82, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 31, 63, 0.08);
 }
 
 .benefit-icon-wrap {
@@ -2461,9 +2482,9 @@ img {
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary-glow);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0, 31, 63, 0.1);
+  border-color: rgba(0, 82, 255, 0.15);
 }
 
 .project-image-wrapper {
@@ -2482,7 +2503,7 @@ img {
 }
 
 .project-card:hover .project-img {
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 .project-tag-badge {
@@ -3002,6 +3023,8 @@ img {
   box-shadow: 0 12px 35px rgba(0, 82, 255, 0.5);
 }
 
+
+
 /* ===== CONTACT/BOOKING MODAL ===== */
 .modal-backdrop {
   position: fixed;
@@ -3057,6 +3080,8 @@ img {
 .modal-header {
   margin-bottom: 2.25rem;
 }
+
+
 
 .modal-header h2 {
   font-family: var(--font-heading);
