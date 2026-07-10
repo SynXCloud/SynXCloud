@@ -69,7 +69,7 @@
     --transition-slow: 0.5s var(--ease-smooth);
 
     /* Spacing */
-    --container-max: 1280px;
+    --container-max: 1440px;
     --section-padding: 7rem;
     --header-height: 4.5rem;
 
