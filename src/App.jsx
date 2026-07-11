@@ -873,6 +873,13 @@ function App() {
             <div className="why-choose-info reveal">
               <span className="eyebrow">WHY CHOOSE SYNXCLOUD</span>
               <h2>Committed to Your Success at Every Step</h2>
+              <p className="why-choose-desc">
+                We build secure, scalable, and high-performance digital solutions with transparent communication, dedicated teams, and long-term support.
+              </p>
+              <button onClick={() => openModal('project')} className="btn btn-primary btn-sm" style={{ marginTop: '1.5rem' }}>
+                Start Your Project
+                <Icon name="arrowRight" size={16} />
+              </button>
             </div>
 
             <div className="why-choose-benefits-grid">
