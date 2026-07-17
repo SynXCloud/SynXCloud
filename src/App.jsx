@@ -164,8 +164,841 @@ function Icon({ name, className = '', size = 20, style = {} }) {
   return icons[name] || null
 }
 
+/* ===== DATA MODELS ===== */
+const TEAM_MEMBERS = [
+  {
+    name: 'Karan Purkait',
+    role: 'Founder & CEO',
+    bio: 'Software engineer and system designer with a passion for building scalable, high-performance web applications and cloud architecture.',
+    image: '/karan_purkait.jpg',
+    linkedin: 'https://www.linkedin.com/in/karan-purkait/'
+  },
+  {
+    name: 'Shuvadeep Mondal',
+    role: 'Co-Founder & COO',
+    bio: 'Operations strategist focused on streamlining delivery workflows, scaling organizational capability, and managing global client relations.',
+    image: '/shuvadeep_mondal.jpg',
+    linkedin: 'https://www.linkedin.com/in/shuvadeepmondal/'
+  },
+  {
+    name: 'Puskar Roy',
+    role: 'Co-Founder & CTO',
+    bio: 'Full-stack engineer and cloud developer specialized in scalable systems, Kubernetes orchestration, and robust backend services.',
+    image: '/puskar_roy.jpg',
+    linkedin: 'https://www.linkedin.com/in/puskar-roy/'
+  }
+]
+
+const JOBS = [
+  {
+    id: 'business-dev',
+    title: 'Business Development & Sales Executive',
+    department: 'Sales & Growth',
+    location: 'Work From Home (Remote)',
+    type: 'Flexible',
+    salary: 'Not Disclosed',
+    requirements: [
+      'Proven track record in client acquisition, lead generation, or sales for custom software agencies.',
+      'Excellent verbal and written communication, active listening, and relationship management skills.',
+      'Highly motivated, self-driven individual capable of initiating conversations and scheduling discovery calls with international leads.'
+    ]
+  },
+  {
+    id: 'lead-gen',
+    title: 'Outbound Outreach & Lead Generation Specialist',
+    department: 'Sales & Growth',
+    location: 'Work From Home (Remote)',
+    type: 'Flexible',
+    salary: 'Not Disclosed',
+    requirements: [
+      'Experience setting up and managing cold email outreach campaigns, LinkedIn automation, and lead databases.',
+      'Proficiency in prospect research, scraping/enriching lists, and writing high-converting outreach sequences.',
+      'Strong organizational skills to qualify replies and hand off warm leads to the sales team.'
+    ]
+  },
+  {
+    id: 'account-manager',
+    title: 'Client Success & Account Manager',
+    department: 'Client Operations',
+    location: 'Work From Home (Remote)',
+    type: 'Flexible',
+    salary: 'Not Disclosed',
+    requirements: [
+      'Experience managing relationships and project milestones between engineering teams and enterprise clients.',
+      'Strong communication skills to translate business needs into technical scope, address feedback, and ensure smooth delivery.',
+      'Ability to identify expansion opportunities within existing client accounts and drive retention.'
+    ]
+  }
+]
+
+const BLOG_POSTS = [
+  {
+    id: 1,
+    title: 'The Future of Web Development with AI Automation in 2026',
+    category: 'Technology',
+    author: 'Karan Purkait',
+    date: 'July 10, 2026',
+    readTime: '5 min read',
+    excerpt: 'Explore how generative AI and modern frameworks are reshaping custom software development, enabling high agency and faster delivery times.',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
+    content: (
+      <>
+        <p>AI automation is no longer just a futuristic concept; it is actively reshaping how modern web applications are designed, developed, and deployed. In 2026, developers leverage AI subagents to perform styling, asset generations, and repetitive coding tasks, shifting the focus to high-agency engineering and creative problem-solving.</p>
+        <h2>Why AI Collaboration is Key</h2>
+        <p>Instead of replacing software engineers, AI tools act as powerful pair programmers. By automating routing, boilerplate configurations, and basic testing, they allow developers to spend more time refining user experiences and scaling system architectures.</p>
+        <h2>The Shift to Custom SaaS Solutions</h2>
+        <p>With accelerated development cycles, businesses can now build completely bespoke SaaS products at a fraction of the traditional cost and time, making generic off-the-shelf software obsolete.</p>
+      </>
+    )
+  },
+  {
+    id: 2,
+    title: 'AWS vs. GCP: Choosing the Right Cloud Provider for Scaling SaaS',
+    category: 'Cloud & DevOps',
+    author: 'David Kim',
+    date: 'July 05, 2026',
+    readTime: '7 min read',
+    excerpt: 'A comprehensive comparative guide on cloud infrastructure, scalability, disaster recovery, and cost-efficiency for international applications.',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop',
+    content: (
+      <>
+        <p>Deciding where to host your scaling software is one of the most critical decisions for any tech organization. Both Amazon Web Services (AWS) and Google Cloud Platform (GCP) offer outstanding features, but their strengths differ in compute, storage, and developer workflows.</p>
+        <h2>AWS: The Industry Standard for Enterprise</h2>
+        <p>AWS provides the most comprehensive suite of services. Its mature Infrastructure-as-Code (Terraform) integration and extensive security tools make it the go-to choice for enterprise-level custom software that requires complex compliance architectures.</p>
+        <h2>GCP: The Container & Kubernetes Champion</h2>
+        <p>For startups and modern SaaS companies that rely heavily on Docker and Kubernetes, Google Cloud's Google Kubernetes Engine (GKE) provides an unparalleled user experience, simple networking, and top-tier analytics integration.</p>
+      </>
+    )
+  },
+  {
+    id: 3,
+    title: 'Why Clean UI/UX Design Directs Client Conversion Rates',
+    category: 'Product Design',
+    author: 'Sarah Jenkins',
+    date: 'June 28, 2026',
+    readTime: '4 min read',
+    excerpt: 'How modern micro-animations, curated color palettes, and clear visual hierarchies elevate brand trust and drive higher business conversion.',
+    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop',
+    content: (
+      <>
+        <p>A beautiful user interface is much more than just eye candy; it is a critical component of your conversion funnel. When a user lands on your website or dashboard, they make a subconscious decision to trust your brand within seconds.</p>
+        <h2>The Power of CURATED Colors and Fonts</h2>
+        <p>Using generic colors and default browser typography immediately cheapens the experience. High-end brands use carefully selected palettes, rich gradients, and custom modern typography (like Outfit or Montserrat) to stand out.</p>
+        <h2>Micro-Animations & Visual Hierarchy</h2>
+        <p>Subtle hover states, glowing gradients, and smooth spring-based transitions keep the user engaged and navigate them naturally toward primary CTA buttons (like "Start Your Project"), directly driving higher signups and sales.</p>
+      </>
+    )
+  }
+]
+
+const SERVICES = [
+  {
+    id: 'dev',
+    tag: 'Development',
+    title: 'Web, Mobile & Custom Software',
+    desc: 'High-performance custom websites, tailored software solutions, and mobile apps built using React, Next.js, and React Native.',
+    features: ['Custom Web & Mobile Apps', 'Bespoke Software & SaaS', 'Responsive & Modern UI'],
+    image: '/service_development.png'
+  },
+  {
+    id: 'ai',
+    tag: 'AI Automation',
+    title: 'AI Automation & Chatbots',
+    desc: 'Leverage AI to automate workflows, qualify leads and enhance customer experience globally.',
+    features: ['Intelligent Chatbots', 'Workflow Automation', 'AI Integrations'],
+    image: '/service_ai_automation.png'
+  },
+  {
+    id: 'uiux-design',
+    tag: 'Product Design',
+    title: 'UI/UX & Product Strategy',
+    desc: 'Stunning user interfaces and seamless user journeys crafted to elevate your brand globally.',
+    features: ['Figma Wireframes & Prototypes', 'Design Systems for Brands', 'User Research & Strategy'],
+    image: '/service_uiux_design.png'
+  },
+  {
+    id: 'cloud-devops',
+    tag: 'Cloud Architecture',
+    title: 'AWS/GCP Cloud & DevOps',
+    desc: 'High availability, auto-scaling, and secure serverless setups built for cross-continental low latency applications.',
+    features: ['Infrastructure as Code (Terraform)', 'CI/CD Deployment Pipelines', 'Auto-scaling & Disaster Recovery'],
+    image: '/service_cloud_devops.png'
+  },
+  {
+    id: 'support',
+    tag: 'Support',
+    title: 'Software Maintenance & Management',
+    desc: "We don't just build; we maintain. Ensuring your software systems are always secure, updated & optimized for global clients.",
+    features: ['Ongoing Maintenance & Support', 'Performance Optimization', 'Security Audits & Updates'],
+    image: '/service_support.png'
+  }
+]
+
+function ServicesPage({ openModal }) {
+  const [activeFilter, setActiveFilter] = useState('All')
+  
+  const filters = ['All', 'Development', 'AI Automation', 'Product Design', 'Cloud Architecture', 'Support']
+  
+  const filteredServices = activeFilter === 'All'
+    ? SERVICES
+    : SERVICES.filter(service => service.tag === activeFilter)
+
+  return (
+    <div className="page-container services-page-container reveal visible">
+      <div className="page-header">
+        <h1>Our Expert Services</h1>
+        <p>From strategic design to custom software engineering and intelligent cloud infrastructure, we build digital solutions that scale.</p>
+      </div>
+
+      <div className="portfolio-filters">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+
+      <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '2.5rem', padding: '1rem 0' }}>
+        {filteredServices.map((service, index) => (
+          <div key={index} className="service-card reveal visible" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div className="service-image-wrapper">
+              <img src={service.image} alt={service.title} className="service-card-image" />
+              <div className="service-image-overlay" />
+            </div>
+
+            <div className="service-card-body" style={{ flexGrow: '1', display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+              <span className="service-badge" style={{ alignSelf: 'flex-start' }}>{service.tag}</span>
+              <h3 style={{ marginTop: '0.75rem', fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '0.75rem' }}>{service.title}</h3>
+              <p className="service-desc" style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem', flexGrow: '1' }}>{service.desc}</p>
+
+              <ul className="service-bullets" style={{ listStyle: 'none', padding: '0', margin: '0 0 2rem 0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {service.features.map((feature, i) => (
+                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--text-dark)' }}>
+                    <span className="bullet-dash" style={{ color: 'var(--primary-color)', fontWeight: '700' }}>✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <button onClick={() => openModal('project')} className="btn btn-primary btn-sm btn-block" style={{ marginTop: 'auto' }}>
+                Explore Solution
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '0.5rem' }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function TermsPage() {
+  return (
+    <div className="page-container terms-container reveal visible" style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+      <div className="page-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--text-dark)' }}>Terms & Conditions</h1>
+        <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>Last updated: July 12, 2026</p>
+      </div>
+
+      <div className="terms-content" style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '0.975rem' }}>
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>1. Agreement to Terms</h2>
+          <p>Welcome to SynXCloud. By accessing or using our website, services, and software solutions, you agree to be bound by these Terms and Conditions. If you do not agree to all of these terms, please do not use our services.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>2. Services Provided</h2>
+          <p>SynXCloud provides custom software engineering, mobile application development, AI automation solutions, cloud infrastructure setup, and consulting services. All custom solutions are delivered based on independent statements of work (SOW) agreed between SynXCloud and the client.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>3. Intellectual Property Rights</h2>
+          <p>Unless otherwise stated in an active service contract or statement of work, all pre-existing software libraries, proprietary algorithms, tools, and website designs developed by SynXCloud remain the exclusive intellectual property of SynXCloud. Upon full payment of services, intellectual property ownership of bespoke code specifically created for the client is fully transferred to the client.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>4. User Obligations</h2>
+          <p>You agree to use our website and services only for lawful purposes. You must not attempt to breach security measures, distribute malware, or perform unauthorized testing of our infrastructure.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>5. Limitation of Liability</h2>
+          <p>In no event shall SynXCloud, its directors, or partners be liable for any indirect, incidental, special, or consequential damages resulting from the use or inability to use our services, or any security events beyond our reasonable control.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>6. Changes to Terms</h2>
+          <p>We reserve the right to modify or replace these terms at any time. Your continued use of the website and services following any changes constitutes your acceptance of the updated terms.</p>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+function PrivacyPage() {
+  return (
+    <div className="page-container privacy-container reveal visible" style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+      <div className="page-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--text-dark)' }}>Privacy Policy</h1>
+        <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>Last updated: July 12, 2026</p>
+      </div>
+
+      <div className="privacy-content" style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '0.975rem' }}>
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>1. Information We Collect</h2>
+          <p>We collect information you provide directly to us when filling out our contact forms, booking discovery calls, or applying for careers. This information typically includes your name, email address, phone number, company name, and details of your data or professional background.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>2. How We Use Your Information</h2>
+          <p>We use the collected information to:
+            <ul style={{ paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+              <li>Provide, maintain, and optimize our development services.</li>
+              <li>Respond to inquiries, consultation requests, and support tickets.</li>
+              <li>Evaluate job applications and resumes for career opportunities.</li>
+              <li>Comply with regulatory requirements and ensure website security.</li>
+            </ul>
+          </p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>3. Information Sharing and Disclosure</h2>
+          <p>We do not sell, rent, or trade your personal information. We may share information with trusted third-party service providers (such as hosting, email delivery, and CRM tools) who assist us in operating our business under strict confidentiality agreements.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>4. Data Security</h2>
+          <p>We implement industry-standard administrative, technical, and physical security measures to protect your personal data from unauthorized access, loss, or alteration. However, please note that no internet transmission is 100% secure.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>5. Your Privacy Rights</h2>
+          <p>Depending on your location, you may have rights under regional regulations (such as GDPR or CCPA) to access, correct, delete, or limit the processing of your personal data. To exercise these rights, please contact us at info@synxcloud.in.</p>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+function CookiePage() {
+  return (
+    <div className="page-container cookie-container reveal visible" style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+      <div className="page-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--text-dark)' }}>Cookie Policy</h1>
+        <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>Last updated: July 12, 2026</p>
+      </div>
+
+      <div className="cookie-content" style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '0.975rem' }}>
+        <p>SynXCloud uses cookies and similar tracking technologies to improve performance, analyze website traffic, and enhance your overall browsing experience.</p>
+        
+        <section style={{ marginBottom: '2.5rem', marginTop: '1.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>1. What Are Cookies?</h2>
+          <p>Cookies are small text files stored on your computer or mobile device when you visit a website. They are widely used by website owners to make their sites work, or work more efficiently, as well as to provide reporting information.</p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>2. Types of Cookies We Use</h2>
+          <p>We use the following types of cookies:
+            <ul style={{ paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+              <li><strong>Essential Cookies:</strong> Required for the operation of the website, such as managing session state and security tokens.</li>
+              <li><strong>Analytical Cookies:</strong> Help us analyze traffic patterns and user behavior so we can optimize website performance.</li>
+              <li><strong>Preference Cookies:</strong> Remember your selected configuration, language settings, and active page views.</li>
+            </ul>
+          </p>
+        </section>
+
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '1rem', fontWeight: '700' }}>3. Controlling Your Cookie Settings</h2>
+          <p>Most browsers allow you to manage cookies through their settings settings. You can block or delete cookies, but doing so may impact the functionality and accessibility of certain sections of our website.</p>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+const FAQS = [
+  {
+    category: 'General',
+    q: 'What is SynXCloud?',
+    a: 'SynXCloud is a high-performance software agency building bespoke web applications, mobile apps, artificial intelligence automation systems, and scalable cloud architectures. We cater to startups and enterprises looking to build, innovate, and grow their digital footprint globally.'
+  },
+  {
+    category: 'General',
+    q: 'Where is SynXCloud located and how do you operate?',
+    a: 'Our core operations team is based in West Bengal, India, serving clients across the globe (US, Europe, Asia) with seamless remote collaboration. We align with our client’s local time zones for scheduling check-ins and delivery syncs.'
+  },
+  {
+    category: 'Services',
+    q: 'What technologies and frameworks do you specialize in?',
+    a: 'We specialize in state-of-the-art frameworks, primarily React, Next.js, Node.js, Express, Python, and TypeScript. For databases and infrastructure, we work extensively with PostgreSQL, MongoDB, Redis, AWS (Amazon Web Services), Google Cloud Platform (GCP), Docker, and Kubernetes.'
+  },
+  {
+    category: 'Services',
+    q: 'Do you design and build mobile apps?',
+    a: 'Yes, we design and build cross-platform mobile apps for both iOS and Android platforms using React Native, ensuring native-grade performance, fluid animations, and a single maintainable codebase.'
+  },
+  {
+    category: 'Process',
+    q: 'How do you ensure transparency and keep clients updated?',
+    a: 'We follow Agile development methodologies. Clients receive daily or weekly updates (depending on scope) through platforms like Slack and Jira. We also host live staging environments where clients can review progress in real-time, accompanied by direct access to target GitHub/GitLab repositories.'
+  },
+  {
+    category: 'Process',
+    q: 'Do you sign Non-Disclosure Agreements (NDAs)?',
+    a: 'Absolutely. Protecting client intellectual property and sensitive trade information is our top priority. We sign comprehensive, legally binding NDAs before exchanging any proprietary project requirements.'
+  },
+  {
+    category: 'Pricing & IP',
+    q: 'Who owns the project’s source code once it is complete?',
+    a: 'You do. Upon project completion and settlement of outstanding invoices, complete intellectual property rights, database configurations, and git repositories are fully transferred to your company.'
+  },
+  {
+    category: 'Pricing & IP',
+    q: 'What are your engagement and billing models?',
+    a: 'We offer two primary models: Fixed Price (best for clearly defined, milestone-based projects) and Dedicated Development Team (Time & Materials, billed weekly or monthly, ideal for ongoing, agile product development).'
+  }
+]
+
+function FaqsPage() {
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [expandedIndex, setExpandedIndex] = useState(null)
+
+  const categories = ['All', 'General', 'Services', 'Process', 'Pricing & IP']
+
+  const filteredFaqs = activeCategory === 'All'
+    ? FAQS
+    : FAQS.filter(faq => faq.category === activeCategory)
+
+  const toggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index)
+  }
+
+  return (
+    <div className="page-container faqs-page-container reveal visible">
+      <div className="page-header" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find clear answers about our services, methodologies, pricing models, and intellectual property transfers.</p>
+      </div>
+
+      <div className="portfolio-filters" style={{ marginBottom: '3rem' }}>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`portfolio-filter-btn ${activeCategory === cat ? 'active' : ''}`}
+            onClick={() => {
+              setActiveCategory(cat)
+              setExpandedIndex(null)
+            }}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div className="faq-accordion-container" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        {filteredFaqs.map((faq, index) => {
+          const isExpanded = expandedIndex === index
+          return (
+            <div
+              key={index}
+              className={`faq-item-card ${isExpanded ? 'expanded' : ''}`}
+              style={{
+                background: 'var(--bg-white)',
+                border: '1.5px solid var(--border-color)',
+                borderRadius: 'var(--radius-lg)',
+                overflow: 'hidden',
+                transition: 'all var(--transition-base)',
+                boxShadow: isExpanded ? '0 10px 25px rgba(0, 31, 63, 0.05)' : 'var(--shadow-sm)'
+              }}
+            >
+              <button
+                onClick={() => toggleExpand(index)}
+                className="faq-question-btn"
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '1.75rem 2rem',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  outline: 'none'
+                }}
+              >
+                <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--text-dark)' }}>{faq.q}</span>
+                <span className="faq-icon-indicator" style={{
+                  color: 'var(--primary-color)',
+                  fontSize: '1.5rem',
+                  fontWeight: '700',
+                  transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)',
+                  transition: 'transform var(--transition-fast)'
+                }}>+</span>
+              </button>
+
+              <div
+                className="faq-answer-wrapper"
+                style={{
+                  maxHeight: isExpanded ? '500px' : '0px',
+                  opacity: isExpanded ? '1' : '0',
+                  transition: 'all var(--transition-normal) ease-in-out',
+                  overflow: 'hidden'
+                }}
+              >
+                <div style={{ padding: '0 2rem 1.75rem 2rem', color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.975rem', borderTop: isExpanded ? '1px solid var(--border-color)' : 'none', paddingTop: isExpanded ? '1.5rem' : '0' }}>
+                  {faq.a}
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+const PROJECTS = [
+  {
+    id: 'ecommerce',
+    title: 'E-Commerce Platform',
+    tag: 'E-Commerce',
+    category: 'Web App',
+    desc: 'Custom e-commerce platform with advanced features and payment integrations.',
+    challenge: 'The client needed a highly scalable checkout platform that could support up to 5,000 requests per minute during flash sales without layout shifts or server latency.',
+    solution: 'Designed a Next.js frontend deployed to Vercel, utilizing incremental static regeneration (ISR) and a serverless AWS API cluster integrated with Redis for caching user carts.',
+    stack: ['Next.js', 'AWS', 'Node.js', 'Redis'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop',
+    stats: [
+      { val: '150%', lbl: 'Increase in Sales' },
+      { val: '2.5x', lbl: 'ROI Growth' }
+    ]
+  },
+  {
+    id: 'ai-chatbot',
+    title: 'AI Customer Support Bot',
+    tag: 'AI Automation',
+    category: 'AI Automation',
+    desc: 'Intelligent chatbot that handles customer queries and reduces support workload.',
+    challenge: 'Customer support staff spent 80% of their time answering simple, repetitive questions about order tracking and refunds, delaying critical inquiries.',
+    solution: 'Created an intelligent customer service agent using OpenAI GPT-4, coupled with LangChain and pinecone vector databases to fetch real-time documentation and resolve 60%+ queries autonomously.',
+    stack: ['Python', 'OpenAI', 'AWS', 'LangChain'],
+    image: 'https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=600&auto=format&fit=crop',
+    stats: [
+      { val: '60%', lbl: 'Support Tickets Reduced' },
+      { val: '24/7', lbl: 'Instant Response' }
+    ]
+  },
+  {
+    id: 'lms',
+    title: 'Learning Management System',
+    tag: 'Edtech',
+    category: 'Web App',
+    desc: 'Scalable LMS platform with video courses, quizzes, and progress tracking.',
+    challenge: 'An online educational academy needed a multi-tenant portal with instant streaming video capability, course tracking, and localized quiz generation that worked on poor mobile networks.',
+    solution: 'Developed a responsive single-page React app with video processing assets hosted in Amazon S3/CloudFront and PostgreSQL for robust user analytics.',
+    stack: ['React', 'PostgreSQL', 'AWS', 'Node.js'],
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop',
+    stats: [
+      { val: '5K+', lbl: 'Active Students' },
+      { val: '98%', lbl: 'Satisfaction Rate' }
+    ]
+  },
+  {
+    id: 'fintech',
+    title: 'FinTech Payment Gateway',
+    tag: 'Fintech',
+    category: 'Fintech',
+    desc: 'Secure payment engine integrated with localized multi-currency conversion and fraud detection.',
+    challenge: 'A global travel service required credit card and local payment parsing with real-time conversion and strict compliance with PCI-DSS guidelines.',
+    solution: 'Designed and deployed a highly encrypted payment gateway using Node.js/TypeScript, stripe integrations, and real-time fraud alerts using Redis telemetry filters.',
+    stack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=600&auto=format&fit=crop',
+    stats: [
+      { val: '99.99%', lbl: 'Uptime SLA' },
+      { val: '$2.4M', lbl: 'Processed Monthly' }
+    ]
+  },
+  {
+    id: 'telemetry',
+    title: 'Real-time IoT Telemetry Panel',
+    tag: 'IoT & Cloud',
+    category: 'Cloud & Enterprise',
+    desc: 'High-frequency telemetry data streaming dashboard with sub-50ms rendering latency.',
+    challenge: 'An industrial machinery supplier required real-time telemetry monitoring for their fleet of 200+ active robots sending 100 updates per second.',
+    solution: 'Built a specialized telemetry platform leveraging WebSockets, AWS ECS container orchestration, and multi-threaded Web Workers to handle state rendering without UI lockups.',
+    stack: ['React', 'Node.js', 'AWS ECS', 'Redis'],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop',
+    stats: [
+      { val: '<50ms', lbl: 'Stream Latency' },
+      { val: '10M+', lbl: 'Daily Events' }
+    ]
+  },
+  {
+    id: 'erp-system',
+    title: 'Supply Chain Automation ERP',
+    tag: 'Enterprise Software',
+    category: 'Cloud & Enterprise',
+    desc: 'Automated warehouse management system syncing inventory tracking with demand forecasting.',
+    challenge: 'A regional logistics brand relied on manual inventory sheets, resulting in stockouts and high operating expenses.',
+    solution: 'Engineered a central enterprise management dashboard syncing warehouse tracking, inventory forecasts, and sales pipelines in a single React admin panel.',
+    stack: ['React', 'Python', 'Docker', 'PostgreSQL'],
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop',
+    stats: [
+      { val: '40%', lbl: 'Lead Time Cut' },
+      { val: '0.01%', lbl: 'Inventory Error Rate' }
+    ]
+  }
+]
+
+function PortfolioPage({ setSelectedProject, openModal }) {
+  const [activeFilter, setActiveFilter] = useState('All')
+  
+  const filters = ['All', 'Web App', 'AI Automation', 'Cloud & Enterprise', 'Fintech']
+  
+  const filteredProjects = activeFilter === 'All'
+    ? PROJECTS
+    : PROJECTS.filter(project => project.category === activeFilter)
+
+  return (
+    <div className="page-container portfolio-page-container reveal visible">
+      <div className="page-header">
+        <h1>Our Portfolio & Case Studies</h1>
+        <p>Explore our successfully delivered custom software, AI automation pipelines, and scalable cloud solutions for international clients.</p>
+      </div>
+
+      <div className="portfolio-filters">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+
+      <div className="projects-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '2.5rem', padding: '1rem 0' }}>
+        {filteredProjects.map((project, index) => (
+          <div key={index} className="project-card reveal visible" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="project-image-wrapper">
+              <span className="project-tag-badge" style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: '2' }}>
+                {project.tag}
+              </span>
+              <img src={project.image} alt={project.title} className="project-img" />
+            </div>
+            <div className="project-body-grid" style={{ flexGrow: '1', display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+              <div className="project-left-col" style={{ width: '100%', borderRight: 'none', paddingRight: '0', display: 'flex', flexDirection: 'column', flexGrow: '1' }}>
+                <h3 style={{ marginTop: '0', fontSize: '1.4rem', color: 'var(--text-dark)', marginBottom: '0.75rem' }}>{project.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>{project.desc}</p>
+                
+                <div className="portfolio-card-tech" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                  {project.stack.map((tech, i) => (
+                    <span key={i} className="stack-tag" style={{ background: 'var(--surface-light)', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '0.25rem 0.6rem', fontSize: '0.75rem', color: 'var(--text-dark)' }}>{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="project-divider-line" style={{ width: '100%', height: '1px', background: 'var(--border-color)', margin: '1rem 0' }} />
+
+              <div className="project-right-col" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                {project.stats.map((stat, i) => (
+                  <div key={i} className="project-stat-block" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span className="proj-stat-val" style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--primary-color)' }}>{stat.val}</span>
+                    <span className="proj-stat-lbl" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{stat.lbl}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button 
+                className="btn btn-outline btn-sm btn-block" 
+                style={{ marginTop: 'auto' }}
+                onClick={() => {
+                  setSelectedProject(project);
+                  openModal('project_detail');
+                }}
+              >
+                View Case Study
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '0.5rem' }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/* ===== PAGE SUB-COMPONENTS ===== */
+function TeamPage() {
+  return (
+    <div className="page-container team-container reveal visible">
+      <div className="page-header">
+        <h1>Meet Our Team</h1>
+        <p>A global team of passionate developers, designers, and cloud architects working together to deliver exceptional digital products.</p>
+      </div>
+
+      <div className="team-grid">
+        {TEAM_MEMBERS.map((member, index) => (
+          <div key={index} className="team-card">
+            <div className="team-image-wrap">
+              <img src={member.image} alt={member.name} className="team-image" />
+            </div>
+            <div className="team-info">
+              <h3>{member.name}</h3>
+              <div className="team-role">{member.role}</div>
+              <p className="team-bio">{member.bio}</p>
+              <div className="team-socials">
+                {member.linkedin && (
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function BlogPage({ selectedBlogPost, setSelectedBlogPost }) {
+  if (selectedBlogPost) {
+    return (
+      <div className="blog-post-view reveal visible">
+        <div className="blog-post-back" onClick={() => setSelectedBlogPost(null)}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Back to Blog
+        </div>
+        <div className="blog-post-header">
+          <h1>{selectedBlogPost.title}</h1>
+          <div className="blog-post-meta">
+            <span>By {selectedBlogPost.author}</span>
+            <span>•</span>
+            <span>{selectedBlogPost.date}</span>
+            <span>•</span>
+            <span>{selectedBlogPost.readTime}</span>
+            <span>•</span>
+            <span style={{ color: 'var(--primary-color)', fontWeight: '600' }}>{selectedBlogPost.category}</span>
+          </div>
+        </div>
+        <img src={selectedBlogPost.image} alt={selectedBlogPost.title} className="blog-post-hero-image" />
+        <div className="blog-post-content">
+          {selectedBlogPost.content}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="page-container blog-container reveal visible">
+      <div className="page-header">
+        <h1>Latest Insights & News</h1>
+        <p>Stay updated with our latest thought leadership on software development, AI workflows, product design, and cloud technologies.</p>
+      </div>
+
+      <div className="blog-grid">
+        {BLOG_POSTS.map((post) => (
+          <div key={post.id} className="blog-card" onClick={() => {
+            setSelectedBlogPost(post);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}>
+            <div className="blog-card-image-wrap">
+              <span className="blog-card-category">{post.category}</span>
+              <img src={post.image} alt={post.title} className="blog-card-image" />
+            </div>
+            <div className="blog-card-body">
+              <div className="blog-card-meta">
+                <span>📅 {post.date}</span>
+                <span>⏱ {post.readTime}</span>
+              </div>
+              <h3 className="blog-card-title">{post.title}</h3>
+              <p className="blog-card-excerpt">{post.excerpt}</p>
+              <div className="blog-card-footer">
+                <span>Read Full Article</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function CareersPage({ selectedJob, setSelectedJob, openModal }) {
+  return (
+    <div className="page-container careers-container reveal visible">
+      <div className="page-header">
+        <h1>Join Our Mission</h1>
+        <p>We are a remote-first, high-agency team building custom software and AI automation solutions. Work on challenging international projects from anywhere.</p>
+      </div>
+
+      <div className="careers-why-us">
+        <div className="careers-why-card">
+          <div className="careers-why-icon">🌍</div>
+          <h3>Remote-First Work</h3>
+          <p>Work from the comfort of your home, co-working space, or from anywhere in the world.</p>
+        </div>
+        <div className="careers-why-card">
+          <div className="careers-why-icon">⚡</div>
+          <h3>High Agency</h3>
+          <p>We trust our team completely. Take ownership, manage your hours, and deliver outstanding results.</p>
+        </div>
+        <div className="careers-why-card">
+          <div className="careers-why-icon">📚</div>
+          <h3>Growth & Mentorship</h3>
+          <p>Get access to premium courses, development workshops, and receive mentorship from senior tech leads.</p>
+        </div>
+      </div>
+
+      <div className="careers-positions-section">
+        <div className="careers-positions-header">
+          <h2>Open Positions</h2>
+          <p>Find your next challenge. We are always looking for ambitious and skilled tech professionals.</p>
+        </div>
+
+        <div className="job-list">
+          {JOBS.map((job) => (
+            <div key={job.id} className="job-card">
+              <div className="job-card-left">
+                <h3>{job.title}</h3>
+                <div className="job-card-meta">
+                  <span>💼 {job.department}</span>
+                  <span>📍 {job.location}</span>
+                  <span>⏱ {job.type}</span>
+                  <span>💰 {job.salary}</span>
+                </div>
+              </div>
+              <button 
+                onClick={() => {
+                  setSelectedJob(job);
+                  openModal('careers_apply');
+                }} 
+                className="job-card-apply-btn"
+              >
+                Apply Now
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 /* ===== APP COMPONENT ===== */
 function App() {
+  const [view, setView] = useState('home') // 'home', 'blog', 'careers', 'team', 'portfolio'
+  const [selectedBlogPost, setSelectedBlogPost] = useState(null)
+  const [selectedJob, setSelectedJob] = useState(null)
+  const [selectedProject, setSelectedProject] = useState(null)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -175,17 +1008,258 @@ function App() {
   const [formStatus, setFormStatus] = useState('')
   const [projectIndex, setProjectIndex] = useState(0)
   const [serviceIndex, setServiceIndex] = useState(0)
-  const [visibleItems, setVisibleItems] = useState(3)
+  const [visibleItems, setVisibleItems] = useState(2)
   const formRef = useRef(null)
+  
+  // Touch refs for swipe support
+  const projectTouchStart = useRef(null)
+  const projectTouchEnd = useRef(null)
+  const serviceTouchStart = useRef(null)
+  const serviceTouchEnd = useRef(null)
+
+  // Chatbot State Hooks
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [showChatTooltip, setShowChatTooltip] = useState(false)
+  const [tooltipTextIndex, setTooltipTextIndex] = useState(0)
+  const [displayedTooltipText, setDisplayedTooltipText] = useState('')
+  const TOOLTIP_MESSAGES = [
+    "Let's build your project together! 🤖",
+    "Looking for custom web or mobile apps? 📱",
+    "Automate your workflow with AI agents! ⚡",
+    "Get a project estimate in 2 minutes! 💼",
+    "Let's chat about your tech stack! 🚀"
+  ]
+  const [chatStep, setChatStep] = useState(0) // 0: Name, 1: Email, 2: Service Type, 3: Budget, 4: Brief, 5: Phone, 6: Sending/Success
+  const [chatMessages, setChatMessages] = useState([
+    { sender: 'bot', text: 'Hi there! 👋 I am SynXBot, your automated digital assistant. I can help gather your project requirements and connect you directly with our tech team.' },
+    { sender: 'bot', text: "Let's get started. May I know your name first?" }
+  ])
+  const [chatInput, setChatInput] = useState('')
+  const [chatData, setChatData] = useState({
+    name: '',
+    email: '',
+    projectType: '',
+    budget: '',
+    brief: '',
+    phone: ''
+  })
+  const [isBotTyping, setIsBotTyping] = useState(false)
+  const messagesEndRef = useRef(null)
+
+  // Auto-scroll chat messages to bottom
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [chatMessages, isBotTyping, isChatOpen])
+
+  // Trigger welcome prompt tooltip bubble after 3 seconds when chat is closed
+  useEffect(() => {
+    if (!isChatOpen) {
+      const timer = setTimeout(() => {
+        setShowChatTooltip(true)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [isChatOpen])
+
+  // Cycle welcome suggestion bubble messages every 5 seconds
+  useEffect(() => {
+    if (!showChatTooltip || isChatOpen) return
+    const interval = setInterval(() => {
+      setTooltipTextIndex((prev) => (prev + 1) % TOOLTIP_MESSAGES.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [showChatTooltip, isChatOpen, TOOLTIP_MESSAGES.length])
+
+  // Typewriter effect for welcome suggestion text
+  useEffect(() => {
+    if (!showChatTooltip || isChatOpen) {
+      setDisplayedTooltipText('')
+      return
+    }
+    const fullText = TOOLTIP_MESSAGES[tooltipTextIndex]
+    setDisplayedTooltipText('')
+    
+    let currentString = ''
+    let currentIndex = 0
+    const interval = setInterval(() => {
+      if (currentIndex < fullText.length) {
+        currentString += fullText.charAt(currentIndex)
+        setDisplayedTooltipText(currentString)
+        currentIndex++
+      } else {
+        clearInterval(interval)
+      }
+    }, 45) // 45ms per character is organic and reliable
+    return () => clearInterval(interval)
+  }, [tooltipTextIndex, showChatTooltip, isChatOpen])
+
+  // Chatbot form email submission
+  const sendChatbotEmail = (data) => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS config missing in chatbot', { serviceId, templateId, publicKey })
+      setChatMessages(prev => [
+        ...prev,
+        { sender: 'bot', text: "Oops, we ran into an integration issue. Please contact us directly at info@synxcloud.in." }
+      ])
+      return
+    }
+
+    const templateParams = {
+      user_name: data.name,
+      user_email: data.email,
+      phone: data.phone,
+      subject: `SynXCloud - Chatbot Robot Lead`,
+      message: `
+New Lead Collected via Chatbot:
+------------------------------
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Service Type: ${data.projectType}
+Budget Range: ${data.budget}
+Project Description: ${data.brief}
+      `
+    }
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then(() => {
+        setChatMessages(prev => [
+          ...prev,
+          { sender: 'bot', text: `Success! 🎉 Your requirements have been securely delivered. A solution architect will reach out to you within 24 hours at ${data.email}. Have a great day!` }
+        ])
+      })
+      .catch((error) => {
+        console.error('Chatbot EmailJS error', error)
+        setChatMessages(prev => [
+          ...prev,
+          { sender: 'bot', text: "There was a temporary network error. Don't worry, you can always write to us directly at info@synxcloud.in!" }
+        ])
+      })
+  }
+
+  // Chatbot conversational submit handler
+  const handleChatSubmit = (e, customText = null) => {
+    if (e) e.preventDefault()
+    const text = customText || chatInput.trim()
+    if (!text && chatStep !== 5) return // Allow empty for phone step (Skip)
+
+    // Append user message
+    if (text) {
+      setChatMessages(prev => [...prev, { sender: 'user', text }])
+    }
+    setChatInput('')
+
+    // Set bot typing indicator
+    setIsBotTyping(true)
+
+    // Simulate bot delay
+    setTimeout(() => {
+      setIsBotTyping(false)
+      
+      let nextStep = chatStep
+      let nextMessages = []
+      let updatedData = { ...chatData }
+
+      if (chatStep === 0) {
+        // We received the user's name
+        updatedData.name = text
+        setChatData(updatedData)
+        nextStep = 1
+        nextMessages = [
+          { sender: 'bot', text: `Nice to meet you, ${text}! 😊` },
+          { sender: 'bot', text: "Could you please share your email address so our solutions team can follow up?" }
+        ]
+      } else if (chatStep === 1) {
+        // We received the email address
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(text)) {
+          nextMessages = [
+            { sender: 'bot', text: "Hmm, that doesn't look like a valid email address. Please double check and try again:" }
+          ]
+        } else {
+          updatedData.email = text
+          setChatData(updatedData)
+          nextStep = 2
+          nextMessages = [
+            { sender: 'bot', text: "Got it! Thanks." },
+            { sender: 'bot', text: "What type of service or solution are you looking for?" }
+          ]
+        }
+      } else if (chatStep === 2) {
+        // We received the service type
+        updatedData.projectType = text
+        setChatData(updatedData)
+        nextStep = 3
+        nextMessages = [
+          { sender: 'bot', text: `Excellent. A ${text} project sounds exciting!` },
+          { sender: 'bot', text: "What is your estimated budget range for this project?" }
+        ]
+      } else if (chatStep === 3) {
+        // We received the budget
+        updatedData.budget = text
+        setChatData(updatedData)
+        nextStep = 4
+        nextMessages = [
+          { sender: 'bot', text: "Perfect. Knowing the budget helps us design the best architecture for you." },
+          { sender: 'bot', text: "Could you provide a brief description of what you'd like us to build? (e.g. features, goals, timeline)" }
+        ]
+      } else if (chatStep === 4) {
+        // We received the project brief
+        updatedData.brief = text
+        setChatData(updatedData)
+        nextStep = 5
+        nextMessages = [
+          { sender: 'bot', text: "Thank you for the description! This helps our engineers understand the scope." },
+          { sender: 'bot', text: "Lastly (optional): Would you like to share your phone or WhatsApp number for quicker contact? Otherwise, click 'Skip'." }
+        ]
+      } else if (chatStep === 5) {
+        // We received the phone number or clicked skip
+        const phoneVal = text || 'N/A'
+        updatedData.phone = phoneVal
+        setChatData(updatedData)
+        nextStep = 6
+        
+        nextMessages = [
+          { sender: 'bot', text: "Great! I have gathered all your project details. Please review the summary below:" },
+          { sender: 'bot', text: "", isSummaryCard: true }
+        ]
+      }
+
+      setChatStep(nextStep)
+      setChatMessages(prev => [...prev, ...nextMessages])
+    }, 800)
+  }
+
+  // Triggered when user reviews summary and clicks Submit
+  const handleChatFinalSubmit = () => {
+    setIsBotTyping(true)
+    setChatStep(7)
+
+    setTimeout(() => {
+      setIsBotTyping(false)
+      setChatMessages(prev => [
+        ...prev,
+        { sender: 'bot', text: "Submitting details and establishing contact... 🚀" }
+      ])
+      sendChatbotEmail(chatData)
+    }, 800)
+  }
 
   // Navigation Items
   const NAV_ITEMS = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'technologies', label: 'Technologies' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'Home', type: 'page' },
+    { id: 'services', label: 'Services', type: 'page' },
+    { id: 'portfolio', label: 'Portfolio', type: 'page' },
+    // { id: 'team', label: 'Team', type: 'page' },
+    { id: 'blog', label: 'Blog', type: 'page' },
+    { id: 'careers', label: 'Careers', type: 'page' },
+    { id: 'contact', label: 'Contact', type: 'section' },
   ]
 
   // Stats Data
@@ -194,45 +1268,6 @@ function App() {
     { value: '99%', label: 'Client Satisfaction', icon: 'target' },
     { value: '24/7', label: 'Support & Maintenance', icon: 'shield' },
     { value: '3+', label: 'Years Combined Experience', icon: 'award' },
-  ]
-
-  // Services Data
-  const SERVICES = [
-    {
-      id: 'dev',
-      tag: 'Development',
-      title: 'Web, Mobile & Custom Software',
-      desc: 'High-performance custom websites, tailored software solutions, and mobile apps built using React, Next.js, and React Native.',
-      features: ['Custom Web & Mobile Apps', 'Bespoke Software & SaaS', 'Responsive & Modern UI'],
-    },
-    {
-      id: 'ai',
-      tag: 'AI Automation',
-      title: 'AI Automation & Chatbots',
-      desc: 'Leverage AI to automate workflows, qualify leads and enhance customer experience globally.',
-      features: ['Intelligent Chatbots', 'Workflow Automation', 'AI Integrations'],
-    },
-    {
-      id: 'cloud-devops',
-      tag: 'Cloud Architecture',
-      title: 'AWS/GCP Cloud & DevOps',
-      desc: 'High availability, auto-scaling, and secure serverless setups built for cross-continental low latency applications.',
-      features: ['Infrastructure as Code (Terraform)', 'CI/CD Deployment Pipelines', 'Auto-scaling & Disaster Recovery'],
-    },
-    {
-      id: 'uiux-design',
-      tag: 'Product Design',
-      title: 'UI/UX & Product Strategy',
-      desc: 'Stunning user interfaces and seamless user journeys crafted to elevate your brand globally.',
-      features: ['Figma Wireframes & Prototypes', 'Design Systems for Brands', 'User Research & Strategy'],
-    },
-    {
-      id: 'support',
-      tag: 'Support',
-      title: 'Software Maintenance & Management',
-      desc: 'We don\'t just build; we maintain. Ensuring your software systems are always secure, updated & optimized for global clients.',
-      features: ['Ongoing Maintenance & Support', 'Performance Optimization', 'Security Audits & Updates'],
-    },
   ]
 
   // Why Choose Benefits
@@ -319,75 +1354,7 @@ function App() {
     }
   ]
 
-  // Featured Projects
-  const PROJECTS = [
-    {
-      title: 'E-Commerce Platform',
-      tag: 'E-Commerce',
-      desc: 'Custom e-commerce platform with advanced features and payment integrations.',
-      stack: ['Next.js', 'AWS'],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop',
-      stats: [
-        { val: '150%', lbl: 'Increase in Sales' },
-        { val: '2.5x', lbl: 'ROI Growth' }
-      ]
-    },
-    {
-      title: 'AI Customer Support Bot',
-      tag: 'AI Automation',
-      desc: 'Intelligent chatbot that handles customer queries and reduces support workload.',
-      stack: ['Python', 'OpenAI', 'AWS'],
-      image: 'https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=600&auto=format&fit=crop',
-      stats: [
-        { val: '60%', lbl: 'Support Tickets Reduced' },
-        { val: '24/7', lbl: 'Instant Response' }
-      ]
-    },
-    {
-      title: 'Learning Management System',
-      tag: 'Edtech',
-      desc: 'Scalable LMS platform with video courses, quizzes, and progress tracking.',
-      stack: ['React', 'PostgreSQL', 'AWS'],
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop',
-      stats: [
-        { val: '5K+', lbl: 'Active Students' },
-        { val: '98%', lbl: 'Satisfaction Rate' }
-      ]
-    },
-    {
-      title: 'FinTech Payment Gateway',
-      tag: 'Fintech',
-      desc: 'Secure payment engine integrated with localized multi-currency conversion and fraud detection.',
-      stack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL'],
-      image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=600&auto=format&fit=crop',
-      stats: [
-        { val: '99.99%', lbl: 'Uptime SLA' },
-        { val: '$2.4M', lbl: 'Processed Monthly' }
-      ]
-    },
-    {
-      title: 'Real-time IoT Telemetry Panel',
-      tag: 'IoT & Cloud',
-      desc: 'High-frequency telemetry data streaming dashboard with sub-50ms rendering latency.',
-      stack: ['React', 'Node.js', 'AWS ECS', 'Redis'],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop',
-      stats: [
-        { val: '<50ms', lbl: 'Stream Latency' },
-        { val: '10M+', lbl: 'Daily Events' }
-      ]
-    },
-    {
-      title: 'Supply Chain Automation ERP',
-      tag: 'Enterprise Software',
-      desc: 'Automated warehouse management system syncing inventory tracking with demand forecasting.',
-      stack: ['React', 'Python', 'Docker', 'PostgreSQL'],
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop',
-      stats: [
-        { val: '40%', lbl: 'Lead Time Cut' },
-        { val: '0.01%', lbl: 'Inventory Error Rate' }
-      ]
-    }
-  ]
+
 
   // Testimonials
   const TESTIMONIALS = [
@@ -423,6 +1390,41 @@ function App() {
     setIsModalOpen(false)
     setFormStatus('')
     document.body.style.overflow = ''
+  }
+
+  // Handle SPA routing and scrolling
+  const handleNavClick = (e, item) => {
+    e.preventDefault()
+    if (item.type === 'page') {
+      setView(item.id)
+      setSelectedBlogPost(null)
+      setSelectedJob(null)
+      setActiveSection(item.id)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      // Type is section
+      if (view !== 'home') {
+        setView('home')
+        setActiveSection(item.id)
+        setTimeout(() => {
+          const el = document.getElementById(item.id)
+          if (el) {
+            const offset = 80
+            const top = el.getBoundingClientRect().top + window.scrollY - offset
+            window.scrollTo({ top, behavior: 'smooth' })
+          }
+        }, 150)
+      } else {
+        const el = document.getElementById(item.id)
+        if (el) {
+          const offset = 80
+          const top = el.getBoundingClientRect().top + window.scrollY - offset
+          window.scrollTo({ top, behavior: 'smooth' })
+        }
+        setActiveSection(item.id)
+      }
+    }
+    setMobileOpen(false)
   }
 
   // EmailJS submission
@@ -473,11 +1475,9 @@ function App() {
   // Track window size for visible project & service carousel cards
   useEffect(() => {
     const handleResize = () => {
-      let currentVisible = 3
-      if (window.innerWidth <= 768) {
+      let currentVisible = 2
+      if (window.innerWidth <= 1024) {
         currentVisible = 1
-      } else if (window.innerWidth <= 1120) {
-        currentVisible = 2
       }
       setVisibleItems(currentVisible)
       setProjectIndex((prev) => Math.min(prev, PROJECTS.length - currentVisible))
@@ -504,6 +1504,48 @@ function App() {
     setServiceIndex((prev) => (prev - 1 + (SERVICES.length - visibleItems + 1)) % (SERVICES.length - visibleItems + 1))
   }
 
+  // Touch Swipe Handlers for Projects
+  const onTouchStartProjects = (e) => {
+    projectTouchEnd.current = null
+    projectTouchStart.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchMoveProjects = (e) => {
+    projectTouchEnd.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchEndProjects = () => {
+    if (!projectTouchStart.current || !projectTouchEnd.current) return
+    const distance = projectTouchStart.current - projectTouchEnd.current
+    const minSwipeDistance = 50
+    if (distance > minSwipeDistance) {
+      nextProject()
+    } else if (distance < -minSwipeDistance) {
+      prevProject()
+    }
+  }
+
+  // Touch Swipe Handlers for Services
+  const onTouchStartServices = (e) => {
+    serviceTouchEnd.current = null
+    serviceTouchStart.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchMoveServices = (e) => {
+    serviceTouchEnd.current = e.targetTouches[0].clientX
+  }
+
+  const onTouchEndServices = () => {
+    if (!serviceTouchStart.current || !serviceTouchEnd.current) return
+    const distance = serviceTouchStart.current - serviceTouchEnd.current
+    const minSwipeDistance = 50
+    if (distance > minSwipeDistance) {
+      nextService()
+    } else if (distance < -minSwipeDistance) {
+      prevService()
+    }
+  }
+
   // Scrollspy & reveal observer
   useEffect(() => {
     const sections = ['home', 'services', 'portfolio', 'technologies', 'about', 'contact']
@@ -528,7 +1570,7 @@ function App() {
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [view])
 
   return (
     <div className="site-shell">
@@ -536,7 +1578,7 @@ function App() {
       {/* ===== HEADER ===== */}
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-wrap">
-          <a href="#home" className="brand" onClick={() => setMobileOpen(false)}>
+          <a href="#home" className="brand" onClick={(e) => handleNavClick(e, { id: 'home', type: 'page' })}>
             <img src="/officialLogo-removebg-preview.png" alt="SynXCloud Logo" className="brand-logo" />
             <div className="brand-text">
               <span className="brand-name">
@@ -555,10 +1597,9 @@ function App() {
                   <a
                     href={`#${item.id}`}
                     className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => handleNavClick(e, item)}
                   >
                     {item.label}
-                    {item.hasDropdown && <Icon name="chevronDown" size={12} className="dropdown-chevron" />}
                   </a>
                 </div>
               ))}
@@ -587,7 +1628,7 @@ function App() {
             key={item.id}
             href={`#${item.id}`}
             className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-            onClick={() => setMobileOpen(false)}
+            onClick={(e) => handleNavClick(e, item)}
           >
             {item.label}
           </a>
@@ -606,9 +1647,10 @@ function App() {
       </div>
 
       <main id="main-content">
-
-        {/* ===== HERO SECTION ===== */}
-        <section className="hero" id="home">
+        {view === 'home' && (
+          <>
+            {/* ===== HERO SECTION ===== */}
+            <section className="hero" id="home">
           <div className="hero-radial-glows" />
           <div className="container hero-grid">
             <div className="hero-content reveal">
@@ -627,7 +1669,7 @@ function App() {
                   Start Your Project
                   <Icon name="arrowRight" size={16} />
                 </button>
-                <button onClick={() => openModal('strategy')} className="btn btn-primary btn-lg" style={{ boxShadow: '0 8px 30px rgba(0, 82, 255, 0.4)' }}>
+                <button onClick={() => openModal('strategy')} className="btn btn-outline btn-lg">
                   Book a Strategy Call
                   <Icon name="phone" size={16} />
                 </button>
@@ -764,7 +1806,7 @@ function App() {
                 <p className="services-subtitle">From idea to launch and beyond, we build scalable, secure and high-performing digital products.</p>
               </div>
               <div className="services-controls-wrap">
-                <a href="#portfolio" className="services-link">
+                <a href="#services" onClick={(e) => handleNavClick(e, { id: 'services', type: 'page' })} className="services-link">
                   View all services
                   <Icon name="arrowRight" size={16} />
                 </a>
@@ -776,53 +1818,25 @@ function App() {
                 <Icon name="arrowLeft" size={20} />
               </button>
 
-              <div className="services-carousel-container">
+              <div 
+                className="services-carousel-container"
+                onTouchStart={onTouchStartServices}
+                onTouchMove={onTouchMoveServices}
+                onTouchEnd={onTouchEndServices}
+              >
                 <div
                   className="services-track"
                   style={{
+                    '--visible-items': visibleItems,
                     transform: `translateX(calc(-${serviceIndex} * (100% + var(--grid-gap)) / var(--visible-items)))`
                   }}
                 >
                   {SERVICES.map((s) => (
                     <div key={s.id} className="service-card reveal">
-                      {/* Custom CSS/HTML Illustration mockup at top */}
-                      <div className={`service-mockup-graphic ${s.id}`}>
-                        {s.id === 'dev' && (
-                          <div className="dev-graphic">
-                            <div className="g-laptop"><div className="g-screen"><span className="g-line" /><span className="g-line" /><span className="g-line" /></div></div>
-                            <div className="g-phone"><div className="g-screen"><span className="g-dot" /></div></div>
-                          </div>
-                        )}
-
-                        {s.id === 'support' && (
-                          <div className="support-graphic">
-                            <div className="g-shield">🛡️</div>
-                            <div className="g-gear gear-1">⚙️</div>
-                            <div className="g-gear gear-2">⚙️</div>
-                          </div>
-                        )}
-                        {s.id === 'ai' && (
-                          <div className="ai-graphic">
-                            <div className="g-robot">🤖</div>
-                            <div className="g-bubble bubble-l">Hi!</div>
-                            <div className="g-bubble bubble-r">✦</div>
-                          </div>
-                        )}
-
-                        {s.id === 'cloud-devops' && (
-                          <div className="cloud-devops-graphic">
-                            <div className="g-cloud">☁️</div>
-                            <div className="g-db">🗄️</div>
-                            <div className="g-nodes">⚡</div>
-                          </div>
-                        )}
-                        {s.id === 'uiux-design' && (
-                          <div className="uiux-design-graphic">
-                            <div className="g-palette">🎨</div>
-                            <div className="g-brush">🖌️</div>
-                            <div className="g-spark">✦</div>
-                          </div>
-                        )}
+                      {/* Service Feature Image */}
+                      <div className="service-image-wrapper">
+                        <img src={s.image} alt={s.title} className="service-card-image" />
+                        <div className="service-image-overlay" />
                       </div>
 
                       <div className="service-card-body">
@@ -981,7 +1995,7 @@ function App() {
                 <h2>Delivering Impact Through Innovation</h2>
               </div>
               <div className="projects-controls-wrap">
-                <a href="#contact" className="projects-view-all">
+                <a href="#portfolio" onClick={(e) => handleNavClick(e, { id: 'portfolio', type: 'page' })} className="projects-view-all">
                   View all case studies
                   <Icon name="arrowRight" size={16} />
                 </a>
@@ -993,15 +2007,21 @@ function App() {
                 <Icon name="arrowLeft" size={20} />
               </button>
 
-              <div className="projects-carousel-container">
+              <div 
+                className="projects-carousel-container"
+                onTouchStart={onTouchStartProjects}
+                onTouchMove={onTouchMoveProjects}
+                onTouchEnd={onTouchEndProjects}
+              >
                 <div
                   className="projects-track"
                   style={{
+                    '--visible-items': visibleItems,
                     transform: `translateX(calc(-${projectIndex} * (100% + var(--grid-gap)) / var(--visible-items)))`
                   }}
                 >
                   {PROJECTS.map((p, idx) => (
-                    <div key={idx} className="project-card reveal">
+                    <div key={idx} className="project-card reveal" style={{ cursor: 'pointer' }} onClick={() => { setSelectedProject(p); openModal('project_detail'); }}>
                       <div className="project-image-wrapper">
                         <img src={p.image} alt={p.title} className="project-img" />
                         <span className="project-tag-badge">{p.tag}</span>
@@ -1147,6 +2167,54 @@ function App() {
             </div>
           </div>
         </section>
+          </>
+        )}
+
+        {view === 'blog' && (
+          <BlogPage 
+            selectedBlogPost={selectedBlogPost}
+            setSelectedBlogPost={setSelectedBlogPost}
+          />
+        )}
+
+        {view === 'careers' && (
+          <CareersPage 
+            selectedJob={selectedJob}
+            setSelectedJob={setSelectedJob}
+            openModal={openModal}
+          />
+        )}
+
+        {/* {view === 'team' && (
+          <TeamPage />
+        )} */}
+
+        {view === 'services' && (
+          <ServicesPage openModal={openModal} />
+        )}
+
+        {view === 'portfolio' && (
+          <PortfolioPage 
+            setSelectedProject={setSelectedProject}
+            openModal={openModal}
+          />
+        )}
+
+        {view === 'terms' && (
+          <TermsPage />
+        )}
+
+        {view === 'privacy' && (
+          <PrivacyPage />
+        )}
+
+        {view === 'cookie' && (
+          <CookiePage />
+        )}
+
+        {view === 'faqs' && (
+          <FaqsPage />
+        )}
       </main>
 
       {/* ===== FOOTER ===== */}
@@ -1177,22 +2245,22 @@ function App() {
           <div className="footer-links-col">
             <h4>Company</h4>
             <div className="links-group">
-              <a href="#about">About Us</a>
-              <a href="#about">Careers</a>
-              <a href="#about">Our Team</a>
-              <a href="#portfolio">Blog</a>
-              <a href="#contact">Contact</a>
+              <a href="#about" onClick={(e) => handleNavClick(e, { id: 'about', type: 'section' })}>About Us</a>
+              <a href="#careers" onClick={(e) => handleNavClick(e, { id: 'careers', type: 'page' })}>Careers</a>
+              {/* <a href="#team" onClick={(e) => handleNavClick(e, { id: 'team', type: 'page' })}>Our Team</a> */}
+              <a href="#blog" onClick={(e) => handleNavClick(e, { id: 'blog', type: 'page' })}>Blog</a>
+              <a href="#contact" onClick={(e) => handleNavClick(e, { id: 'contact', type: 'section' })}>Contact</a>
             </div>
           </div>
 
           <div className="footer-links-col">
             <h4>Services</h4>
             <div className="links-group">
-              <a href="#services">Web Development</a>
-              <a href="#services">Mobile App Development</a>
-              <a href="#services">AI Automation</a>
-              <a href="#services">E-Commerce</a>
-              <a href="#services">Maintenance & Support</a>
+              <a href="#services" onClick={(e) => handleNavClick(e, { id: 'services', type: 'page' })}>Web Development</a>
+              <a href="#services" onClick={(e) => handleNavClick(e, { id: 'services', type: 'page' })}>Mobile App Development</a>
+              <a href="#services" onClick={(e) => handleNavClick(e, { id: 'services', type: 'page' })}>AI Automation</a>
+              <a href="#services" onClick={(e) => handleNavClick(e, { id: 'services', type: 'page' })}>E-Commerce</a>
+              <a href="#services" onClick={(e) => handleNavClick(e, { id: 'services', type: 'page' })}>Maintenance & Support</a>
             </div>
           </div>
 
@@ -1210,11 +2278,11 @@ function App() {
           <div className="footer-links-col">
             <h4>Resources</h4>
             <div className="links-group">
-              <a href="#portfolio">Case Studies</a>
-              <a href="#portfolio">Blog</a>
+              <a href="#portfolio" onClick={(e) => handleNavClick(e, { id: 'portfolio', type: 'page' })}>Case Studies</a>
+              <a href="#blog" onClick={(e) => handleNavClick(e, { id: 'blog', type: 'page' })}>Blog</a>
               <a href="#technologies">Tech Stack</a>
               <a href="#process">Process</a>
-              <a href="#about">FAQs</a>
+              <a href="#faqs" onClick={(e) => handleNavClick(e, { id: 'faqs', type: 'page' })}>FAQs</a>
             </div>
           </div>
 
@@ -1242,22 +2310,418 @@ function App() {
             © {new Date().getFullYear()} SynXCloud. All rights reserved.
           </div>
           <div className="footer-legal">
-            <a href="#about">Privacy Policy</a>
-            <a href="#about">Terms of Service</a>
-            <a href="#about">Cookie Policy</a>
+            <a href="#privacy" onClick={(e) => handleNavClick(e, { id: 'privacy', type: 'page' })}>Privacy Policy</a>
+            <a href="#terms" onClick={(e) => handleNavClick(e, { id: 'terms', type: 'page' })}>Terms & Conditions</a>
+            <a href="#cookie" onClick={(e) => handleNavClick(e, { id: 'cookie', type: 'page' })}>Cookie Policy</a>
           </div>
         </div>
       </footer>
 
-      {/* ===== FLOATING ACTION BUTTON ===== */}
-      <button onClick={() => openModal('discovery')} className="floating-fab" aria-label="Book Discovery Call">
-        <Icon name="calendar" size={24} />
-      </button>
+      {/* ===== FLOATING CHATBOT ROBOT (COMMENTED OUT) ===== */}
+      {/* <div className="chatbot-widget-container" style={{ position: 'fixed', bottom: '30px', right: '30px', zIndex: '9999', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+        {isChatOpen && (
+          <div className="chatbot-window reveal visible" style={{
+            width: '380px',
+            height: '540px',
+            background: 'rgba(255, 255, 255, 0.92)',
+            border: '1px solid rgba(0, 82, 255, 0.15)',
+            borderRadius: '24px',
+            boxShadow: '0 20px 50px rgba(0, 31, 63, 0.15)',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            marginBottom: '15px',
+            backdropFilter: 'blur(25px)',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            <div className="chatbot-header" style={{
+              background: 'linear-gradient(135deg, var(--primary-color), #002D8F)',
+              padding: '1.25rem 1.5rem',
+              color: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              boxShadow: '0 4px 15px rgba(0, 82, 255, 0.1)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div className="bot-avatar bot-avatar-floating" style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  fontSize: '1.4rem',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+                }}>
+                  🤖
+                </div>
+                <div>
+                  <h4 style={{ margin: '0', fontSize: '1.05rem', fontWeight: '700', letterSpacing: '0.3px' }}>SynXBot</h4>
+                  <p style={{ margin: '0', fontSize: '0.75rem', opacity: '0.9', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981', display: 'inline-block', boxShadow: '0 0 6px #10B981' }} />
+                    Online • Assistant
+                  </p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+                <button
+                  onClick={() => {
+                    setChatStep(0)
+                    setChatMessages([
+                      { sender: 'bot', text: 'Hi there! 👋 I am SynXBot, your automated digital assistant. I can help gather your project requirements and connect you directly with our tech team.' },
+                      { sender: 'bot', text: "Let's get started. May I know your name first?" }
+                    ])
+                    setChatInput('')
+                    setChatData({ name: '', email: '', projectType: '', budget: '', brief: '', phone: '' })
+                  }}
+                  title="Reset Conversation"
+                  style={{ background: 'none', border: 'none', color: '#fff', opacity: '0.85', cursor: 'pointer', fontSize: '1rem', transition: 'opacity 0.2s' }}
+                  onMouseEnter={(e) => e.target.style.opacity = '1'}
+                  onMouseLeave={(e) => e.target.style.opacity = '0.85'}
+                >
+                  🔄
+                </button>
+                <button
+                  onClick={() => setIsChatOpen(false)}
+                  style={{ background: 'none', border: 'none', color: '#fff', opacity: '0.85', cursor: 'pointer', fontSize: '1.25rem', fontWeight: '700', transition: 'opacity 0.2s' }}
+                  onMouseEnter={(e) => e.target.style.opacity = '1'}
+                  onMouseLeave={(e) => e.target.style.opacity = '0.85'}
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <div className="chatbot-messages" style={{
+              flexGrow: '1',
+              padding: '1.25rem 1.5rem',
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              background: '#F8FAFC'
+            }}>
+              {chatMessages.map((msg, idx) => (
+                <div key={idx} className="chatbot-msg-anim" style={{
+                  alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+                  maxWidth: msg.isSummaryCard ? '100%' : '82%',
+                  background: msg.isSummaryCard ? 'transparent' : (msg.sender === 'user' ? 'var(--primary-color)' : '#ffffff'),
+                  color: msg.sender === 'user' ? '#ffffff' : 'var(--text-dark)',
+                  padding: msg.isSummaryCard ? '0' : '0.85rem 1.1rem',
+                  borderRadius: msg.sender === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+                  boxShadow: msg.isSummaryCard ? 'none' : '0 4px 12px rgba(0, 0, 0, 0.03)',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5',
+                  border: msg.isSummaryCard || msg.sender === 'user' ? 'none' : '1px solid rgba(0, 82, 255, 0.08)',
+                  width: msg.isSummaryCard ? '100%' : 'auto'
+                }}>
+                  {msg.isSummaryCard ? (
+                    <div style={{
+                      background: '#ffffff',
+                      border: '1.5px dashed rgba(0, 82, 255, 0.25)',
+                      borderRadius: '20px',
+                      padding: '1.25rem',
+                      width: '100%',
+                      boxShadow: '0 6px 20px rgba(0, 82, 255, 0.04)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.85rem'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderBottom: '1px solid rgba(0,0,0,0.06)', paddingBottom: '0.5rem', marginBottom: '0.25rem' }}>
+                        <span style={{ fontSize: '1.1rem' }}>📋</span>
+                        <strong style={{ fontSize: '0.9rem', color: 'var(--text-dark)' }}>Project Specification</strong>
+                      </div>
+                      <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                        <div style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--text-dark)' }}>Client Name:</strong> {chatData.name}</div>
+                        <div style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--text-dark)' }}>Work Email:</strong> {chatData.email}</div>
+                        <div style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--text-dark)' }}>Service Required:</strong> {chatData.projectType}</div>
+                        <div style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--text-dark)' }}>Budget range:</strong> {chatData.budget}</div>
+                        <div style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--text-dark)' }}>Contact Phone:</strong> {chatData.phone}</div>
+                        <div style={{ marginTop: '0.5rem', padding: '0.5rem', background: '#F8FAFC', borderRadius: '8px', borderLeft: '3px solid var(--primary-color)' }}><strong style={{ color: 'var(--text-dark)' }}>Brief:</strong> {chatData.brief}</div>
+                      </div>
+                      
+                      {chatStep === 6 && (
+                        <button
+                          onClick={() => handleChatFinalSubmit()}
+                          style={{
+                            background: 'var(--primary-color)',
+                            color: '#ffffff',
+                            border: 'none',
+                            borderRadius: '99px',
+                            padding: '0.7rem 1.5rem',
+                            fontWeight: '700',
+                            fontSize: '0.85rem',
+                            cursor: 'pointer',
+                            textAlign: 'center',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '0.5rem',
+                            boxShadow: '0 4px 12px rgba(0, 82, 255, 0.2)',
+                            transition: 'all 0.2s',
+                            marginTop: '0.5rem'
+                          }}
+                          className="chatbot-submit-btn"
+                        >
+                          🚀 Submit Details
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    msg.text
+                  )}
+                </div>
+              ))}
+              
+              {isBotTyping && (
+                <div style={{
+                  alignSelf: 'flex-start',
+                  background: '#ffffff',
+                  padding: '0.85rem 1.1rem',
+                  borderRadius: '16px 16px 16px 4px',
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.02)',
+                  border: '1px solid rgba(0, 82, 255, 0.08)',
+                  display: 'flex',
+                  gap: '4px',
+                  alignItems: 'center'
+                }}>
+                  <span className="dot-pulse" style={{ width: '6px', height: '6px', background: '#94A3B8', borderRadius: '50%', display: 'inline-block' }} />
+                  <span className="dot-pulse" style={{ width: '6px', height: '6px', background: '#94A3B8', borderRadius: '50%', display: 'inline-block' }} />
+                  <span className="dot-pulse" style={{ width: '6px', height: '6px', background: '#94A3B8', borderRadius: '50%', display: 'inline-block' }} />
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {chatStep === 2 && !isBotTyping && (
+              <div className="quick-options" style={{ padding: '0.6rem 1.5rem', background: '#F8FAFC', display: 'flex', flexWrap: 'wrap', gap: '0.5rem', borderTop: '1px solid rgba(0,0,0,0.03)' }}>
+                {['Web/Software', 'Mobile App', 'AI/Automation', 'DevOps/Cloud', 'Support'].map(option => (
+                  <button
+                    key={option}
+                    onClick={() => handleChatSubmit(null, option)}
+                    style={{
+                      background: '#ffffff',
+                      border: '1px solid rgba(0, 82, 255, 0.2)',
+                      borderRadius: '99px',
+                      padding: '0.45rem 1rem',
+                      color: 'var(--primary-color)',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      boxShadow: '0 2px 5px rgba(0,0,0,0.02)'
+                    }}
+                    className="chatbot-pill-btn"
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {chatStep === 3 && !isBotTyping && (
+              <div className="quick-options" style={{ padding: '0.6rem 1.5rem', background: '#F8FAFC', display: 'flex', flexWrap: 'wrap', gap: '0.5rem', borderTop: '1px solid rgba(0,0,0,0.03)' }}>
+                {['Under $5k', '$5k - $15k', '$15k - $50k', 'Above $50k'].map(option => (
+                  <button
+                    key={option}
+                    onClick={() => handleChatSubmit(null, option)}
+                    style={{
+                      background: '#ffffff',
+                      border: '1px solid rgba(0, 82, 255, 0.2)',
+                      borderRadius: '99px',
+                      padding: '0.45rem 1rem',
+                      color: 'var(--primary-color)',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      boxShadow: '0 2px 5px rgba(0,0,0,0.02)'
+                    }}
+                    className="chatbot-pill-btn"
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {chatStep === 5 && !isBotTyping && (
+              <div className="quick-options" style={{ padding: '0.6rem 1.5rem', background: '#F8FAFC', display: 'flex', justifyContent: 'flex-end', borderTop: '1px solid rgba(0,0,0,0.03)' }}>
+                <button
+                  onClick={() => handleChatSubmit(null, 'Skipped')}
+                  style={{
+                    background: '#94A3B8',
+                    border: 'none',
+                    borderRadius: '99px',
+                    padding: '0.45rem 1.2rem',
+                    color: '#ffffff',
+                    fontSize: '0.8rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#64748B'}
+                  onMouseLeave={(e) => e.target.style.background = '#94A3B8'}
+                >
+                  Skip Step
+                </button>
+              </div>
+            )}
+
+            <form onSubmit={(e) => handleChatSubmit(e)} style={{
+              display: 'flex',
+              borderTop: '1px solid rgba(0, 82, 255, 0.08)',
+              background: '#ffffff',
+              padding: '0.85rem 1.25rem',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                placeholder={
+                  chatStep === 0 ? "Type your name..." :
+                  chatStep === 1 ? "Type your work email..." :
+                  chatStep === 2 ? "Specify custom service..." :
+                  chatStep === 3 ? "Specify budget range..." :
+                  chatStep === 4 ? "Describe requirements..." :
+                  chatStep === 5 ? "Enter phone number..." :
+                  "Reviewing specifications..."
+                }
+                disabled={chatStep >= 6 || isBotTyping}
+                style={{
+                  flexGrow: '1',
+                  border: 'none',
+                  outline: 'none',
+                  fontSize: '0.9rem',
+                  color: 'var(--text-dark)',
+                  background: 'none'
+                }}
+              />
+              <button
+                type="submit"
+                disabled={chatStep >= 6 || isBotTyping}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--primary-color)',
+                  cursor: 'pointer',
+                  fontSize: '1.3rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  opacity: chatStep >= 6 || isBotTyping ? '0.3' : '1',
+                  transition: 'transform 0.2s'
+                }}
+                onMouseEnter={(e) => { if (chatStep < 6 && !isBotTyping) e.target.style.transform = 'translateX(2px)' }}
+                onMouseLeave={(e) => { e.target.style.transform = 'none' }}
+              >
+                ➡️
+              </button>
+            </form>
+          </div>
+        )}
+
+        {showChatTooltip && !isChatOpen && (
+          <div className="chatbot-tooltip reveal visible" style={{
+            position: 'absolute',
+            right: '80px',
+            bottom: '12px',
+            background: 'var(--bg-white)',
+            border: '1.5px solid var(--primary-color)',
+            borderRadius: '16px',
+            padding: '0.85rem 1.25rem',
+            boxShadow: '0 8px 25px rgba(0, 82, 255, 0.12)',
+            whiteSpace: 'normal',
+            width: 'max-content',
+            maxWidth: '280px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            animation: 'chatbotPulse 2s infinite ease-in-out',
+            zIndex: '9998'
+          }}>
+            <span style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-dark)' }}>
+              {displayedTooltipText}
+              <span className="typewriter-cursor" style={{ fontWeight: 'normal', color: 'var(--primary-color)', marginLeft: '2px', animation: 'cursorBlink 0.8s infinite' }}>|</span>
+            </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowChatTooltip(false)
+                setTimeout(() => {
+                  setShowChatTooltip(true)
+                }, 10000)
+              }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--text-muted)',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: '700',
+                padding: '0 2px'
+              }}
+            >
+              ×
+            </button>
+            <div style={{
+              position: 'absolute',
+              right: '-8px',
+              bottom: '20px',
+              width: '12px',
+              height: '12px',
+              background: 'var(--bg-white)',
+              borderRight: '1.5px solid var(--primary-color)',
+              borderTop: '1.5px solid var(--primary-color)',
+              transform: 'rotate(45deg)'
+            }} />
+          </div>
+        )}
+
+        <button
+          onClick={() => {
+            setIsChatOpen(!isChatOpen)
+            setShowChatTooltip(false)
+          }}
+          className={`chatbot-trigger-btn ${isChatOpen ? 'active' : ''}`}
+          aria-label="Chat with SynXBot"
+          style={{
+            width: '64px',
+            height: '64px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, var(--primary-color), #002D8F)',
+            color: '#ffffff',
+            border: 'none',
+            cursor: 'pointer',
+            boxShadow: '0 8px 30px rgba(0, 82, 255, 0.3)',
+            display: 'grid',
+            placeItems: 'center',
+            fontSize: '2.4rem',
+            transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+          }}
+        >
+          {isChatOpen ? '💬' : '🤖'}
+        </button>
+      </div> */}
+
+      {/* ===== FLOATING WHATSAPP CHAT BUTTON ===== */}
+      <a
+        href="https://wa.me/918972209802"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-float-btn"
+        aria-label="Chat on WhatsApp"
+      >
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.388 2.017 13.916.99 11.288.99c-5.457 0-9.882 4.374-9.886 9.804-.001 1.734.475 3.424 1.378 4.92L1.722 21.8l6.234-1.614c.952-.256 1.952-.392 2.96-.392zm8.783-7.202c-.244-.122-1.44-.71-1.662-.792-.222-.082-.383-.122-.544.122-.162.244-.627.792-.769.954-.142.162-.284.183-.528.061-.244-.122-1.03-.38-1.961-1.21-.724-.646-1.213-1.444-1.355-1.688-.142-.244-.015-.376.107-.497.11-.11.244-.284.365-.426.122-.142.162-.244.244-.406.082-.162.041-.304-.02-.426-.062-.122-.544-1.31-.746-1.795-.197-.474-.399-.41-.544-.417-.14-.007-.3-.008-.46-.008-.162 0-.426.061-.649.304-.222.244-.85.83-.85 2.027 0 1.196.87 2.35 1.01 2.533.142.183 1.71 2.61 4.14 3.657.579.25 1.03.398 1.38.51.58.185 1.11.159 1.53.096.467-.07 1.44-.588 1.642-1.156.203-.568.203-1.055.142-1.156-.06-.101-.222-.162-.466-.284z" />
+        </svg>
+      </a>
 
       {/* ===== POPUP CONTACT/BOOKING MODAL ===== */}
       {isModalOpen && (
         <div className="modal-backdrop" onClick={closeModal}>
-          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+          <div className={`modal-card ${modalType === 'project_detail' ? 'modal-card-wide' : ''}`} onClick={(e) => e.stopPropagation()}>
             <button className="modal-close-btn" onClick={closeModal} aria-label="Close modal">
               <Icon name="close" size={18} />
             </button>
@@ -1267,14 +2731,58 @@ function App() {
               {modalType === 'strategy' && <h2>Book a Strategy Call</h2>}
               {modalType === 'project' && <h2>Start Your Project</h2>}
               {modalType === 'clients' && <h2>Our Esteemed Clients</h2>}
-              {modalType !== 'clients' ? (
-                <p>Fill out the form below and our technical leads will reach out to you within 12 hours.</p>
+              {modalType === 'careers_apply' && <h2>Apply for {selectedJob ? selectedJob.title : 'Position'}</h2>}
+              {modalType === 'project_detail' && selectedProject && <h2>Case Study: {selectedProject.title}</h2>}
+              
+              {modalType !== 'clients' && modalType !== 'project_detail' ? (
+                <p>
+                  {modalType === 'careers_apply'
+                    ? 'Please share your details and links to your resume/portfolio below.'
+                    : 'Fill out the form below and our technical leads will reach out to you within 12 hours.'}
+                </p>
+              ) : modalType === 'project_detail' && selectedProject ? (
+                <p style={{ color: 'var(--primary-color)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem', marginTop: '0.25rem' }}>{selectedProject.tag}</p>
               ) : (
                 <p>Meet some of the industry leaders who trust SynXCloud for their digital transformation.</p>
               )}
             </div>
 
-            {modalType === 'clients' ? (
+            {modalType === 'project_detail' && selectedProject ? (
+              <div className="project-details-grid">
+                <div className="project-details-media">
+                  <img src={selectedProject.image} alt={selectedProject.title} className="project-details-hero" />
+                </div>
+                <div className="project-details-info">
+                  <div className="project-details-section">
+                    <h3 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '0.5rem' }}>The Challenge</h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>{selectedProject.challenge}</p>
+                  </div>
+                  <div className="project-details-section">
+                    <h3 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '0.5rem' }}>Our Solution</h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>{selectedProject.solution}</p>
+                  </div>
+                  <div className="project-details-section">
+                    <h3 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '0.5rem' }}>Technologies Used</h3>
+                    <div className="portfolio-card-tech" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.5rem' }}>
+                      {selectedProject.stack.map((tech, i) => (
+                        <span key={i} className="stack-tag" style={{ background: 'var(--surface-light)', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '0.25rem 0.6rem', fontSize: '0.75rem', color: 'var(--text-dark)' }}>{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="project-details-section">
+                    <h3 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '0.5rem' }}>Business Impact</h3>
+                    <div style={{ display: 'flex', gap: '2rem', marginTop: '0.75rem' }}>
+                      {selectedProject.stats.map((stat, i) => (
+                        <div key={i} className="project-stat-block" style={{ display: 'flex', flexDirection: 'column' }}>
+                          <span className="proj-stat-val" style={{ fontSize: '1.6rem', fontWeight: '700', color: 'var(--primary-color)' }}>{stat.val}</span>
+                          <span className="proj-stat-lbl" style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{stat.lbl}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : modalType === 'clients' ? (
               <div className="client-profiles-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem' }}>
                 {TESTIMONIALS.map((t, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'var(--surface-color)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
@@ -1294,9 +2802,51 @@ function App() {
             ) : formStatus === 'success' ? (
               <div className="modal-success-screen">
                 <div className="success-icon-check">✓</div>
-                <h3>Message Sent Successfully!</h3>
+                <h3>{modalType === 'careers_apply' ? 'Application Submitted!' : 'Message Sent Successfully!'}</h3>
                 <p>Thank you for reaching out. We will connect with you shortly.</p>
               </div>
+            ) : modalType === 'careers_apply' ? (
+              <form ref={formRef} onSubmit={handleFormSubmit} className="modal-form">
+                <input type="hidden" name="subject" value={`SynXCloud - Careers Application - ${selectedJob ? selectedJob.title : 'General'}`} />
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="user_name">Full Name</label>
+                    <input type="text" id="user_name" name="user_name" placeholder="Rahul Sharma" required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="user_email">Email Address</label>
+                    <input type="email" id="user_email" name="user_email" placeholder="rahul@example.com" required />
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="portfolio">Resume / Portfolio Link</label>
+                    <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/rahul" required />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="message">Why do you want to join SynXCloud?</label>
+                  <textarea id="message" name="message" placeholder="Briefly describe your experience and why you are a good fit for this role..." rows="4" required />
+                </div>
+
+                <button type="submit" className="btn btn-primary btn-block btn-lg" disabled={formStatus === 'Sending...'}>
+                  {formStatus === 'Sending...' ? 'Submitting Application...' : 'Submit Application'}
+                  <Icon name="arrowRight" size={16} />
+                </button>
+
+                {formStatus === 'error' && (
+                  <div className="form-error-msg">
+                    Unable to submit the application. Please try again later or contact us at info@synxcloud.in.
+                  </div>
+                )}
+              </form>
             ) : (
               <form ref={formRef} onSubmit={handleFormSubmit} className="modal-form">
                 <input type="hidden" name="subject" value={`SynXCloud - ${modalType.toUpperCase()} Request`} />
