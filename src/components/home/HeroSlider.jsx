@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { servicePillars, brandConfig } from '../../data/siteContent';
 import ParticleCanvas from './ParticleCanvas';
+import HeroWaveDivider from './HeroWaveDivider';
 import { ArrowRight, ChevronLeft, ChevronRight, Play, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function HeroSlider() {
@@ -26,7 +27,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <header className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white min-h-[740px] flex items-center justify-center pt-32 pb-24 overflow-hidden">
+    <header className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white min-h-[740px] flex items-center justify-center pt-32 pb-28 sm:pb-32 overflow-hidden">
       
       {/* Interactive Background Particle Mesh */}
       <ParticleCanvas />
@@ -113,18 +114,31 @@ export default function HeroSlider() {
           </Link>
         </div>
 
-        {/* Pillar Highlight Badges */}
-        <div className="mt-12 grid grid-cols-3 gap-3 max-w-2xl mx-auto pt-6 border-t border-white/10">
-          {currentPillar.stats?.map((stat, idx) => (
-            <div key={idx} className="p-2 text-center">
-              <div className="text-xl md:text-2xl font-extrabold text-white" style={{ color: currentPillar.themeColor }}>
-                {stat.value}
+        {/* Pillar Highlight Badges with Animated Cyber Beam Divider */}
+        <div className="relative mt-12 max-w-2xl mx-auto pt-6">
+          {/* Animated Glowing Cyber Beam Line */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent overflow-hidden">
+            <div 
+              className="absolute top-0 h-[2px] w-36 rounded-full animate-beamScan"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${currentPillar.themeColor}, transparent)`,
+                boxShadow: `0 0 14px ${currentPillar.themeColor}`
+              }}
+            />
+          </div>
+
+          <div className="grid grid-cols-3 gap-3">
+            {currentPillar.stats?.map((stat, idx) => (
+              <div key={idx} className="p-2 text-center">
+                <div className="text-xl md:text-2xl font-extrabold text-white" style={{ color: currentPillar.themeColor }}>
+                  {stat.value}
+                </div>
+                <div className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Slide Indicators */}
@@ -146,13 +160,8 @@ export default function HeroSlider() {
 
       </div>
 
-      {/* Bottom Wave Divider */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-10 bg-slate-50"
-        style={{
-          clipPath: 'polygon(0 100%, 100% 100%, 100% 0)'
-        }}
-      />
+      {/* Animated Multi-Layered Flowing Wave Divider */}
+      <HeroWaveDivider themeColor={currentPillar.themeColor} />
     </header>
   );
 }
