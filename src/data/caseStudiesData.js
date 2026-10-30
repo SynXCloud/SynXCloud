@@ -8,8 +8,8 @@ export const caseStudiesData = [
     title: "Zero-Downtime Migration for Tier-1 FinTech Platform",
     clientIndustry: "Financial Services & Banking",
     pillarSlug: "cloud-infrastructure",
-    pillarName: "Cloud & DevOps Architecture",
-    themeColor: "#ea580c",
+    pillarName: "Cloud & DevOps",
+    themeColor: "#059669",
     summary: "Modernized on-premise transactional monolith to AWS multi-region Kubernetes with real-time replication and zero customer impact.",
     challenge: "The client suffered from frequent latency spikes during market opening hours and exorbitant on-premise hardware maintenance costs totaling over $1.2M annually.",
     solution: "Engineered an automated blue-green migration pipeline utilizing Terraform, Amazon EKS, and dual-write database synchronization to ensure 100% data integrity.",
@@ -104,8 +104,8 @@ export const caseStudiesData = [
     title: "Automated DevSecOps Pipeline for Enterprise FinTech",
     clientIndustry: "Financial Services & Banking",
     pillarSlug: "cloud-infrastructure",
-    pillarName: "Cloud & DevOps Architecture",
-    themeColor: "#ea580c",
+    pillarName: "Cloud & DevOps",
+    themeColor: "#059669",
     summary: "Created a zero-trust CI/CD deployment system with automated static analysis, container scanning, and compliance-as-code.",
     challenge: "Manual security reviews delayed production release cycles to once every six weeks, hampering the product team's competitive velocity.",
     solution: "Instituted GitOps deployment pipelines with GitHub Actions, HashiCorp Vault, and automated security policies, enabling 15 daily production releases.",
@@ -145,5 +145,53 @@ export const caseStudiesData = [
       title: "Co-Founder, CareDirect Health"
     },
     techStack: ["React Native", "WebRTC", "Node.js", "Redis", "AWS", "Twilio API"]
+  },
+  {
+    id: "b2b-saas-growth-funnel",
+    slug: "b2b-saas-growth-funnel",
+    title: "340% Pipeline Expansion via Technical SEO & Paid Acquisition",
+    clientIndustry: "Enterprise B2B Software & FinTech",
+    pillarSlug: "digital-marketing",
+    pillarName: "Digital Marketing & Growth Engineering",
+    themeColor: "#ea580c",
+    summary: "Engineered an end-to-end inbound acquisition pipeline, algorithmic programmatic SEO system, and multi-touch attribution model.",
+    challenge: "The startup struggled with high CAC ($850+) and low conversion rates across search campaigns with virtually zero organic search presence in Tier-1 markets.",
+    solution: "Engineered 1,200+ programmatic SEO landing pages, optimized Core Web Vitals to 99+, and instituted high-intent LinkedIn & Google Search funnels.",
+    metrics: [
+      { value: "340%", label: "Organic Inbound Leads" },
+      { value: "-58%", label: "Customer Acquisition Cost" },
+      { value: "4.2x", label: "ROAS on Paid Search & Social" },
+      { value: "99+", label: "Google Core Web Vitals" }
+    ],
+    quote: {
+      text: "SynXcloud approaches marketing like software engineering. Their technical SEO and conversion rate optimization delivered our record sales quarter.",
+      author: "Rachel Vance",
+      title: "Chief Marketing Officer, HyperScale Systems"
+    },
+    techStack: ["Next.js Programmatic Pages", "Google Analytics 4", "Semrush API", "Meta Ads API", "Segment CDP", "HubSpot"]
+  },
+  {
+    id: "fintech-pod-staff-augmentation",
+    slug: "fintech-pod-staff-augmentation",
+    title: "Rapid 14-Day Deployment of a Vetted 6-Person Engineering Pod",
+    clientIndustry: "Financial Technology & Neobanking",
+    pillarSlug: "tech-staffing",
+    pillarName: "Tech Staffing & Dedicated Engineering Pods",
+    themeColor: "#0d9488",
+    summary: "Assembled and embedded an elite 6-person squad of Kubernetes, React, and Go engineers to accelerate a high-stakes banking platform release.",
+    challenge: "A Series-B neobank had an imminent launch deadline but faced a 4-month hiring freeze and acute talent shortage in senior cloud systems engineers.",
+    solution: "Deployed a pre-vetted, timezone-aligned pod with a dedicated tech lead within 14 days, achieving zero friction in sprint velocity.",
+    metrics: [
+      { value: "14 Days", label: "Time-to-Deploy Full Pod" },
+      { value: "100%", label: "Sprint Velocity Target Met" },
+      { value: "$210k", label: "Recruiting & Onboarding Saved" },
+      { value: "98%", label: "Pod Retention Over 12 Mos" }
+    ],
+    quote: {
+      text: "SynXcloud's staffing pods hit the ground running on day one. They felt like our own in-house core engineers without the 4-month hiring cycle.",
+      author: "Dmitri Volkov",
+      title: "VP of Engineering, VaultCore Finance"
+    },
+    techStack: ["Kubernetes", "Go", "React 19", "TypeScript", "PostgreSQL", "Jira & Agile Pods"]
   }
 ];

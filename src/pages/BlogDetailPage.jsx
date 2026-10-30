@@ -11,53 +11,59 @@ export default function BlogDetailPage() {
   const related = blogPosts.filter(p => p.id !== post.id);
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-36 pb-24">
-      <div className="max-w-6xl mx-auto px-4">
-        
-        {/* Back navigation */}
-        <Link 
-          to="/blog" 
-          className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-indigo-600 mb-8 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Engineering Publications</span>
-        </Link>
+    <div className="bg-slate-50 min-h-screen">
+      
+      {/* Article Hero Banner */}
+      <section className="pt-36 pb-16 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          
+          {/* Back navigation */}
+          <Link 
+            to="/blog" 
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-white mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to Engineering Publications</span>
+          </Link>
 
-        {/* Article Header */}
-        <div className="max-w-3xl mb-10">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-indigo-50 text-indigo-600">
-              {post.category}
-            </span>
-            <span className="text-xs text-slate-400 flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5" />
-              {post.readTime}
-            </span>
-            <span className="text-xs text-slate-400">&bull; {post.date}</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
-            {post.title}
-          </h1>
-
-          {/* Author Header Strip */}
-          <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
-            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center p-1 border-2 border-indigo-200 shadow-sm flex-shrink-0 overflow-hidden">
-              <img 
-                src={post.authorImage} 
-                alt={post.author} 
-                className="w-full h-full object-contain scale-110"
-                onError={(e) => { e.currentTarget.src = "/officialLogo-removebg-preview.png"; }}
-              />
+          {/* Article Header */}
+          <div className="mb-2">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                {post.category}
+              </span>
+              <span className="text-xs text-slate-300 flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-indigo-400" />
+                {post.readTime}
+              </span>
+              <span className="text-xs text-slate-400">&bull; {post.date}</span>
             </div>
-            <div>
-              <strong className="block text-sm text-slate-900">{post.author}</strong>
-              <span className="text-xs text-slate-500">{post.authorRole}</span>
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+              {post.title}
+            </h1>
+
+            {/* Author Header Strip */}
+            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 border-2 border-indigo-400 shadow-sm flex-shrink-0 overflow-hidden">
+                <img 
+                  src={post.authorImage} 
+                  alt={post.author} 
+                  className="w-full h-full object-contain scale-110"
+                  onError={(e) => { e.currentTarget.src = "/officialLogo-removebg-preview.png"; }}
+                />
+              </div>
+              <div>
+                <strong className="block text-sm text-white">{post.author}</strong>
+                <span className="text-xs text-slate-300">{post.authorRole}</span>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Main Grid: Content + Table of Contents Sidebar */}
+      {/* Main Grid: Content + Table of Contents Sidebar */}
+      <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Main Article Body (8 cols) */}

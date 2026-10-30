@@ -20,7 +20,11 @@ import BlogDetailPage from './pages/BlogDetailPage';
 import CareersPage from './pages/CareersPage';
 import PartnerPage from './pages/PartnerPage';
 import ContactPage from './pages/ContactPage';
+import InternationalClientsPage from './pages/InternationalClientsPage';
 import NotFoundPage from './pages/NotFoundPage';
+
+// Floating Conversion Widgets
+import WhatsAppFloat from './components/common/WhatsAppFloat';
 
 // Scroll to top helper on route change
 function ScrollToTop() {
@@ -74,8 +78,13 @@ export default function App() {
             {/* Partner Program */}
             <Route path="/partner" element={<PartnerPage />} />
 
+            {/* International Clients Hub */}
+            <Route path="/international-clients" element={<InternationalClientsPage />} />
+
             {/* Contact & Consultation */}
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/consultation" element={<ContactPage />} />
+            <Route path="/project-enquiry" element={<ContactPage />} />
 
             {/* 404 Fallback */}
             <Route path="*" element={<NotFoundPage />} />
@@ -83,6 +92,9 @@ export default function App() {
         </main>
 
         <Footer />
+
+        {/* Global Floating WhatsApp Enquiry Widget */}
+        <WhatsAppFloat />
       </div>
     </BrowserRouter>
   );

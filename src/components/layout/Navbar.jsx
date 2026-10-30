@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { brandConfig, servicePillars } from '../../data/siteContent';
 import MegaMenu from './MegaMenu';
-import { ChevronDown, Headset, Menu, X, ArrowRight, ShieldCheck, Sparkles, Mail, Phone } from 'lucide-react';
+import { ChevronDown, Headset, Menu, X, ArrowRight, ShieldCheck, Sparkles, Mail, Phone, Calendar, Globe2 } from 'lucide-react';
+import { WhatsAppIcon } from '../common/SocialIcons';
+import BookConsultationModal from '../common/BookConsultationModal';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [consultationOpen, setConsultationOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -65,11 +68,11 @@ export default function Navbar() {
           WebkitBackdropFilter: 'blur(16px)'
         }}
       >
-      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 flex items-center justify-between">
         
-        {/* Brand Logo & Name - Left-Shift Oriented */}
-        <Link to="/" className="flex items-center gap-3.5 group flex-shrink-0">
-          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 shadow-md border-2 border-white/20 flex-shrink-0 transition-transform group-hover:scale-105 overflow-hidden">
+        {/* Brand Logo & Name - Strictly Left-Oriented */}
+        <Link to="/" className="flex items-center gap-3 group flex-shrink-0 mr-4">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white flex items-center justify-center p-1 shadow-md border-2 border-white/20 flex-shrink-0 transition-transform group-hover:scale-105 overflow-hidden">
             <img 
               src={brandConfig.logoLight} 
               alt={brandConfig.companyName} 
@@ -78,7 +81,7 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg xl:text-xl font-extrabold text-white tracking-tight flex items-center gap-0.5">
+            <span className="text-base sm:text-lg xl:text-xl font-extrabold text-white tracking-tight flex items-center gap-0.5">
               SynX<span className="text-indigo-400">Cloud</span>
             </span>
             <span className="text-[9px] uppercase font-bold text-slate-300 tracking-wider hidden sm:block -mt-0.5">
@@ -87,12 +90,12 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Right-Shift Oriented: Desktop Navigation Links + CTA Button */}
-        <div className="hidden lg:flex items-center gap-3 xl:gap-5 ml-auto">
+        {/* All Other Items - Strictly Right-Oriented: All Navigation Links, WhatsApp & CTA Button */}
+        <div className="hidden lg:flex items-center justify-end gap-0.5 xl:gap-1 2xl:gap-1.5 ml-auto flex-shrink-0">
           <Link 
             to="/" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname === '/' ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Home
@@ -100,8 +103,8 @@ export default function Navbar() {
 
           <Link 
             to="/about-us" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname === '/about-us' ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/about-us' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             About Us
@@ -115,8 +118,8 @@ export default function Navbar() {
             <button 
               type="button"
               onClick={() => setMegaOpen(!megaOpen)}
-              className={`flex items-center gap-1 text-xs xl:text-sm font-semibold py-1 px-1.5 rounded-lg transition-colors ${
-                location.pathname.startsWith('/services') ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+              className={`flex items-center gap-1 text-[13px] xl:text-sm 2xl:text-[15px] font-semibold py-1 px-1 xl:px-1.5 rounded-lg transition-colors whitespace-nowrap cursor-pointer ${
+                location.pathname.startsWith('/services') ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
               <span>Services</span>
@@ -128,8 +131,8 @@ export default function Navbar() {
 
           <Link 
             to="/industries" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname.startsWith('/industries') ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname.startsWith('/industries') ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Industries
@@ -137,8 +140,8 @@ export default function Navbar() {
 
           <Link 
             to="/case-studies" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname === '/case-studies' ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/case-studies' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Case Studies
@@ -146,8 +149,8 @@ export default function Navbar() {
 
           <Link 
             to="/products" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname === '/products' ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/products' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Products
@@ -155,8 +158,8 @@ export default function Navbar() {
 
           <Link 
             to="/blog" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname.startsWith('/blog') ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname.startsWith('/blog') ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Blog
@@ -164,8 +167,8 @@ export default function Navbar() {
 
           <Link 
             to="/careers" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname === '/careers' ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/careers' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Careers
@@ -173,31 +176,64 @@ export default function Navbar() {
 
           <Link 
             to="/partner" 
-            className={`text-xs xl:text-sm font-semibold transition-colors py-1 px-1.5 rounded-lg ${
-              location.pathname === '/partner' ? 'text-indigo-400 font-bold bg-white/5' : 'text-slate-300 hover:text-white'
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/partner' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
             }`}
           >
             Partner
           </Link>
 
-          {/* Right CTA Button */}
+          {/* Contact Nav Link */}
           <Link 
             to="/contact" 
-            className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white px-4 xl:px-5 py-2.5 rounded-full shadow-lg transition-transform hover:-translate-y-0.5 flex-shrink-0 ml-1"
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg whitespace-nowrap ${
+              location.pathname === '/contact' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            Contact
+          </Link>
+
+          {/* International Clients Hub */}
+          <Link 
+            to="/international-clients" 
+            className={`text-[13px] xl:text-sm 2xl:text-[15px] font-semibold transition-colors py-1 px-1 xl:px-1.5 rounded-lg flex items-center gap-1 whitespace-nowrap ${
+              location.pathname === '/international-clients' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-300 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Globe2 className="w-3.5 h-3.5 text-indigo-400 flex-shrink-0" />
+            <span>Global Clients</span>
+          </Link>
+
+          {/* Quick WhatsApp Chat */}
+          <a
+            href={brandConfig.contact.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            title="Chat on WhatsApp (< 15 min reply)"
+            className="w-7 h-7 xl:w-8 xl:h-8 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition-all hover:scale-105 shadow-md flex-shrink-0 ml-0.5"
+          >
+            <WhatsAppIcon size={14} />
+          </a>
+
+          {/* Right CTA Button: Book a Free Consultation */}
+          <button 
+            type="button"
+            onClick={() => setConsultationOpen(true)}
+            className="flex items-center gap-1.5 text-[11px] xl:text-xs font-bold uppercase tracking-wider text-white px-3.5 xl:px-4 py-2 rounded-full shadow-lg transition-transform hover:-translate-y-0.5 flex-shrink-0 ml-1 cursor-pointer whitespace-nowrap"
             style={{
               background: 'linear-gradient(135deg, #5c5de8 0%, #3b82f6 100%)',
-              boxShadow: '0 4px 16px rgba(92, 93, 232, 0.4)'
+              boxShadow: '0 4px 14px rgba(92, 93, 232, 0.4)'
             }}
           >
-            <Headset className="w-3.5 h-3.5" />
-            <span>Talk to an Expert</span>
-          </Link>
+            <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
+            <span>Book Free Consultation</span>
+          </button>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger Button - Right-Oriented */}
         <button 
           type="button"
-          className="lg:hidden text-white p-2 focus:outline-none"
+          className="lg:hidden text-white p-2 focus:outline-none ml-auto"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle Navigation Menu"
         >
@@ -377,6 +413,17 @@ export default function Navbar() {
             Partner Program
           </Link>
           <Link 
+            to="/international-clients" 
+            onClick={() => setMobileOpen(false)}
+            className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+              location.pathname === '/international-clients' ? 'text-indigo-400 font-bold bg-white/10' : 'text-slate-200 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Globe2 className="w-4 h-4 text-indigo-400" />
+            <span>International Clients (Global Desk)</span>
+          </Link>
+
+          <Link 
             to="/contact" 
             onClick={() => setMobileOpen(false)}
             className={`block px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
@@ -386,8 +433,17 @@ export default function Navbar() {
             Contact
           </Link>
 
-          {/* Quick Contact Info in Sidebar */}
+          {/* Quick Contact & WhatsApp Info in Sidebar */}
           <div className="pt-6 mt-4 border-t border-white/10 text-xs text-slate-400 space-y-2.5">
+            <a 
+              href={brandConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2.5 text-emerald-400 hover:text-emerald-300 font-semibold"
+            >
+              <WhatsAppIcon size={16} />
+              <span>WhatsApp Live Desk (&lt; 15 min reply)</span>
+            </a>
             <div className="flex items-center gap-2.5">
               <Mail className="w-3.5 h-3.5 text-indigo-400" />
               <a href={`mailto:${brandConfig.contact.email}`} className="hover:text-white">
@@ -403,22 +459,42 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Bottom CTA Button in Sidebar */}
-        <div className="p-5 border-t border-white/10 bg-slate-950/70">
-          <Link 
-            to="/contact" 
-            onClick={() => setMobileOpen(false)}
-            className="w-full text-center flex items-center justify-center gap-2 py-3.5 rounded-full font-bold text-sm text-white shadow-xl transition-transform hover:-translate-y-0.5"
+        {/* Bottom CTA Buttons in Sidebar */}
+        <div className="p-5 border-t border-white/10 bg-slate-950/70 space-y-2.5">
+          <button 
+            type="button"
+            onClick={() => {
+              setMobileOpen(false);
+              setConsultationOpen(true);
+            }}
+            className="w-full text-center flex items-center justify-center gap-2 py-3.5 rounded-full font-bold text-sm text-white shadow-xl transition-transform hover:-translate-y-0.5 cursor-pointer"
             style={{
               background: 'linear-gradient(135deg, #5c5de8 0%, #3b82f6 100%)',
               boxShadow: '0 4px 16px rgba(92, 93, 232, 0.4)'
             }}
           >
-            <Headset className="w-4 h-4" />
-            <span>Talk to an Expert</span>
-          </Link>
+            <Calendar className="w-4 h-4" />
+            <span>Book Free Consultation</span>
+          </button>
+
+          <a 
+            href={brandConfig.contact.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full text-center flex items-center justify-center gap-2 py-2.5 rounded-full font-bold text-xs text-white bg-emerald-600 hover:bg-emerald-500 transition-colors shadow-md"
+          >
+            <WhatsAppIcon size={16} />
+            <span>Chat on WhatsApp</span>
+          </a>
         </div>
       </aside>
+
+      {/* Free Consultation Booking Modal */}
+      <BookConsultationModal
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+        defaultTopic="Technical Architecture Consultation & Strategy"
+      />
     </>
   );
 }

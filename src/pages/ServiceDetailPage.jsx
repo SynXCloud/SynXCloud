@@ -1,13 +1,16 @@
 // src/pages/ServiceDetailPage.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { servicePillars, brandConfig } from '../data/siteContent';
 import { caseStudiesData } from '../data/caseStudiesData';
-import { CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Layers, Cpu, Server, Code, Zap } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Layers, Cpu, Server, Code, Zap, Calendar, Clock } from 'lucide-react';
 import FAQAccordion from '../components/common/FAQAccordion';
+import { WhatsAppIcon } from '../components/common/SocialIcons';
+import BookConsultationModal from '../components/common/BookConsultationModal';
 
 export default function ServiceDetailPage() {
   const { pillar: pillarSlug, id: subserviceSlug } = useParams();
+  const [consultationOpen, setConsultationOpen] = useState(false);
 
   // Find corresponding pillar or fallback to Pillar 1
   const pillar = servicePillars.find(p => p.slug === pillarSlug) || servicePillars[0];
@@ -93,27 +96,55 @@ export default function ServiceDetailPage() {
             {desc} Built with enterprise-grade resilience, automated telemetry, and rigorous compliance standards.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <Link 
-              to={`/contact?service=${subserviceSlug || pillarSlug}`}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm shadow-2xl transition-all transform hover:-translate-y-0.5"
-              style={{ 
-                backgroundColor: pillar.themeColor,
-                boxShadow: `0 8px 25px ${pillar.themeColor}45`
-              }}
-            >
-              <span>Book Technical Assessment</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+          <div className="space-y-4">
+            <div className="flex flex-wrap items-center gap-3.5">
+              <button 
+                type="button"
+                onClick={() => setConsultationOpen(true)}
+                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-white font-bold text-sm shadow-2xl transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                style={{ 
+                  backgroundColor: pillar.themeColor,
+                  boxShadow: `0 8px 25px ${pillar.themeColor}45`
+                }}
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Book Free Consultation</span>
+              </button>
 
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-colors"
-            >
-              <span>View Case Studies</span>
-            </Link>
+              <a
+                href={brandConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-emerald-300 font-bold text-sm bg-emerald-950/40 border border-emerald-500/40 hover:bg-emerald-900/50 transition-colors shadow-md"
+              >
+                <WhatsAppIcon size={16} />
+                <span>WhatsApp Desk (&lt; 15m)</span>
+              </a>
+
+              <Link
+                to={`/contact?service=${subserviceSlug || pillarSlug}`}
+                className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-colors"
+              >
+                <span>Project Scoping Form</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-slate-300">
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Guaranteed 4-hour response SLA</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Mutual NDA on first touch</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span>Zero sales pressure</span>
+              </span>
+            </div>
           </div>
-
         </div>
       </section>
 
@@ -305,6 +336,56 @@ export default function ServiceDetailPage() {
           <FAQAccordion items={detailFaqs} accentColor={pillar.themeColor} />
         </div>
       </section>
+
+      {/* 7. Bottom Conversion Banner */}
+      <section className="py-20 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2 block">
+            Next Steps For Your Project
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            Ready to Scope Your {title} Initiative?
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+            Collaborate directly with our Principal Architects. We provide a preliminary architecture review, sprint sizing, and deliverable roadmap within 24 to 48 hours.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
+            <button
+              type="button"
+              onClick={() => setConsultationOpen(true)}
+              className="px-8 py-3.5 rounded-full font-bold text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-100 shadow-xl transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <Calendar className="w-4 h-4 text-indigo-600" />
+              <span>Book a Free Consultation</span>
+            </button>
+
+            <a
+              href={brandConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl transition-all flex items-center gap-2"
+            >
+              <WhatsAppIcon size={16} />
+              <span>Chat on WhatsApp (&lt; 15m reply)</span>
+            </a>
+
+            <Link
+              to="/international-clients"
+              className="px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/20 hover:bg-white/10 transition-colors"
+            >
+              <span>International Delivery Hub &rarr;</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Free Consultation Booking Modal */}
+      <BookConsultationModal
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+        defaultTopic={`${title} (${pillar.name})`}
+      />
 
     </div>
   );

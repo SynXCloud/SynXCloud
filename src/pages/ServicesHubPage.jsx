@@ -2,13 +2,15 @@
 import React, { useState } from 'react';
 import { servicePillars, brandConfig } from '../data/siteContent';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, CheckCircle2, Cloud, Code, Cpu } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2, Cloud, Code, Cpu, TrendingUp, Users, Star } from 'lucide-react';
 import FAQAccordion from '../components/common/FAQAccordion';
 
 const iconMap = {
   Cloud: Cloud,
   Code: Code,
-  Cpu: Cpu
+  Cpu: Cpu,
+  TrendingUp: TrendingUp,
+  Users: Users
 };
 
 export default function ServicesHubPage() {
@@ -16,6 +18,8 @@ export default function ServicesHubPage() {
 
   const filteredPillars = activeFilter === 'all' 
     ? servicePillars 
+    : activeFilter === 'main'
+    ? servicePillars.filter(p => p.isMainOffering)
     : servicePillars.filter(p => p.slug === activeFilter);
 
   const hubFaqs = [
@@ -28,12 +32,12 @@ export default function ServicesHubPage() {
       a: "Our core senior pods can onboard within 48 to 72 hours following the execution of our mutual NDA and initial architecture discovery call."
     },
     {
-      q: "Can we combine Cloud Infrastructure with Bespoke Software and AI Automation?",
-      a: "Yes! Over 65% of our enterprise clients leverage cross-pillar architectures, such as deploying bespoke React/Next.js portals on hardened Kubernetes clusters with embedded Agentic AI document triage."
+      q: "Can we combine Cloud Infrastructure with Bespoke Software, AI Automation, and Marketing?",
+      a: "Yes! Over 65% of our enterprise clients leverage cross-practice engagements, such as deploying bespoke React/Next.js portals on hardened Kubernetes clusters with embedded Agentic AI and technical SEO growth funnels."
     },
     {
       q: "Who owns the intellectual property (IP)?",
-      a: "You do. 100% of code, architecture diagrams, container configurations, and proprietary AI workflows belong to your company upon milestone acceptance."
+      a: "You do. 100% of code, architecture diagrams, container configurations, and proprietary workflows belong to your company upon milestone acceptance."
     }
   ];
 
@@ -49,30 +53,43 @@ export default function ServicesHubPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
-            Specialized Engineering Practices
+            Specialized Engineering &amp; Growth Practices
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Explore our complete catalog of cloud, full-stack, and autonomous AI capabilities engineered to accelerate enterprise velocity and eliminate operational bottlenecks.
+            Explore our prioritized 5 service practices engineered to win enterprise clients, accelerate product velocity, and scale qualified demand.
           </p>
 
           {/* Interactive Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-10">
             <button
               onClick={() => setActiveFilter('all')}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeFilter === 'all' 
                   ? 'bg-white text-slate-900 shadow-lg' 
                   : 'bg-white/10 text-white hover:bg-white/20'
               }`}
             >
-              All Practices (21+ Capabilities)
+              All 5 Practices (20+ Capabilities)
             </button>
+
+            <button
+              onClick={() => setActiveFilter('main')}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                activeFilter === 'main' 
+                  ? 'bg-amber-400 text-slate-950 shadow-lg font-black' 
+                  : 'bg-white/10 text-amber-300 hover:bg-white/20 border border-amber-400/30'
+              }`}
+            >
+              <Star className="w-3.5 h-3.5 fill-current" />
+              <span>Main Sales Offerings (3)</span>
+            </button>
+
             {servicePillars.map(p => (
               <button
                 key={p.id}
                 onClick={() => setActiveFilter(p.slug)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                   activeFilter === p.slug 
                     ? 'text-white shadow-lg' 
                     : 'bg-white/10 text-white hover:bg-white/20'
@@ -109,8 +126,14 @@ export default function ServicesHubPage() {
                     <PillarIcon className="w-7 h-7" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
+                    <div className="flex flex-wrap items-center gap-2.5 mb-1">
                       <h2 className="text-2xl font-extrabold text-slate-900">{pillar.name}</h2>
+                      {pillar.isMainOffering && (
+                        <span className="text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1 shadow-2xs">
+                          <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
+                          <span>Main Offering #{pillar.offeringTier}</span>
+                        </span>
+                      )}
                       <span 
                         className="text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase"
                         style={{ backgroundColor: `${pillar.themeColor}18`, color: pillar.themeColor }}

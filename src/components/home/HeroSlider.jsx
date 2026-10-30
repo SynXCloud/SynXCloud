@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import { servicePillars, brandConfig } from '../../data/siteContent';
 import ParticleCanvas from './ParticleCanvas';
 import HeroWaveDivider from './HeroWaveDivider';
-import { ArrowRight, ChevronLeft, ChevronRight, Play, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Play, ShieldCheck, Sparkles, Calendar, Clock, Zap } from 'lucide-react';
+import { WhatsAppIcon } from '../common/SocialIcons';
+import BookConsultationModal from '../common/BookConsultationModal';
 
 export default function HeroSlider() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [consultationOpen, setConsultationOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -92,26 +95,56 @@ export default function HeroSlider() {
           {currentPillar.tagline} {currentPillar.longDesc}
         </p>
 
-        {/* Dual Call To Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link 
-            to={`/services/${currentPillar.slug}`}
-            className="px-8 py-4 rounded-full font-bold text-sm text-white transition-all transform hover:-translate-y-1 shadow-xl flex items-center gap-2 cursor-pointer"
-            style={{ 
-              backgroundColor: currentPillar.themeColor,
-              boxShadow: `0 8px 24px ${currentPillar.themeColor}45`
-            }}
-          >
-            <span>Explore Practice</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+        {/* Call To Action Conversion Hub */}
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
+            <button 
+              type="button"
+              onClick={() => setConsultationOpen(true)}
+              className="px-8 py-4 rounded-full font-bold text-sm text-white transition-all transform hover:-translate-y-1 shadow-xl flex items-center gap-2.5 cursor-pointer"
+              style={{ 
+                backgroundColor: currentPillar.themeColor,
+                boxShadow: `0 8px 24px ${currentPillar.themeColor}55`
+              }}
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Book a Free Consultation</span>
+            </button>
 
-          <Link 
-            to={`/contact?service=${currentPillar.slug}`}
-            className="px-8 py-4 rounded-full font-bold text-sm text-white border border-white/25 bg-white/5 hover:bg-white/15 transition-all transform hover:-translate-y-1 shadow-md cursor-pointer"
-          >
-            Request Free Assessment
-          </Link>
+            <Link 
+              to={`/services/${currentPillar.slug}`}
+              className="px-7 py-4 rounded-full font-bold text-sm text-white border border-white/25 bg-white/5 hover:bg-white/15 transition-all transform hover:-translate-y-1 shadow-md cursor-pointer flex items-center gap-2"
+            >
+              <span>Explore Practice</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <a
+              href={brandConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="px-6 py-4 rounded-full font-bold text-sm text-emerald-300 border border-emerald-500/40 bg-emerald-950/40 hover:bg-emerald-900/50 transition-all transform hover:-translate-y-1 shadow-md flex items-center gap-2"
+            >
+              <WhatsAppIcon size={16} />
+              <span>WhatsApp (&lt; 15m)</span>
+            </a>
+          </div>
+
+          {/* Response SLA Micro-Guarantees */}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] sm:text-xs text-slate-300 pt-1">
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Guaranteed Response within 4 Hours</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Mutual NDA Protected</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              <span>30-Min Architecture Discovery</span>
+            </span>
+          </div>
         </div>
 
         {/* Pillar Highlight Badges with Animated Cyber Beam Divider */}
@@ -162,6 +195,13 @@ export default function HeroSlider() {
 
       {/* Animated Multi-Layered Flowing Wave Divider */}
       <HeroWaveDivider themeColor={currentPillar.themeColor} />
+
+      {/* Book Consultation Modal */}
+      <BookConsultationModal
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+        defaultTopic={currentPillar.name}
+      />
     </header>
   );
 }

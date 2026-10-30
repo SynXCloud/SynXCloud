@@ -1,10 +1,13 @@
 // src/pages/AboutPage.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { brandConfig, metricsData } from '../data/siteContent';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Award, Users, Terminal, CheckCircle2, ArrowRight, Zap, Target, Lock, Layers, Cpu, GitBranch } from 'lucide-react';
+import { ShieldCheck, Award, Users, Terminal, CheckCircle2, ArrowRight, Zap, Target, Lock, Layers, Cpu, GitBranch, Calendar, Clock, Globe2 } from 'lucide-react';
+import { WhatsAppIcon } from '../components/common/SocialIcons';
+import BookConsultationModal from '../components/common/BookConsultationModal';
 
 export default function AboutPage() {
+  const [consultationOpen, setConsultationOpen] = useState(false);
   const values = [
     {
       icon: Terminal,
@@ -321,19 +324,73 @@ export default function AboutPage() {
 
       {/* 5. Bottom CTA */}
       <section className="py-20 bg-slate-900 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold mb-4">Ready to Accelerate Your Engineering Roadmap?</h2>
-          <p className="text-sm text-slate-300 mb-8 leading-relaxed">
-            Reach out today to discuss your architecture roadmap or explore a dedicated engineering pod partnership.
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-indigo-400 bg-white/5 border border-white/10 mb-4">
+            <Zap className="w-3.5 h-3.5" />
+            <span>Direct Technical Partnership</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            Ready to Accelerate Your Engineering Roadmap?
+          </h2>
+
+          <p className="text-sm sm:text-base text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Reach out today to discuss your architecture roadmap or explore a dedicated engineering pod partnership. Guaranteed response within 4 hours.
           </p>
-          <Link
-            to="/contact"
-            className="pill-btn"
-          >
-            Schedule Technical Discovery Call &rarr;
-          </Link>
+
+          <div className="flex flex-wrap items-center justify-center gap-3.5 mb-6">
+            <button
+              type="button"
+              onClick={() => setConsultationOpen(true)}
+              className="px-8 py-3.5 rounded-full font-bold text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-100 shadow-xl transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <Calendar className="w-4 h-4 text-indigo-600" />
+              <span>Book a Free Consultation</span>
+            </button>
+
+            <a
+              href={brandConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl transition-all flex items-center gap-2"
+            >
+              <WhatsAppIcon size={16} />
+              <span>WhatsApp Quick Chat (&lt; 15m)</span>
+            </a>
+
+            <Link
+              to="/international-clients"
+              className="px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/20 hover:bg-white/10 transition-colors flex items-center gap-1.5"
+            >
+              <Globe2 className="w-3.5 h-3.5 text-indigo-400" />
+              <span>International Clients</span>
+            </Link>
+          </div>
+
+          {/* Response Commitment Microcopy */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-400 pt-3 border-t border-white/10 max-w-xl mx-auto">
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-amber-400" />
+              <span>4-Hour SLA Commitment</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Mutual NDA Guaranteed</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-sky-400" />
+              <span>100% IP Ownership</span>
+            </span>
+          </div>
         </div>
       </section>
+
+      {/* Free Consultation Booking Modal */}
+      <BookConsultationModal
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+        defaultTopic="Engineering Roadmap & Systems Architecture"
+      />
 
     </div>
   );

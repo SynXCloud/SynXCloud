@@ -1,5 +1,4 @@
-// src/pages/HomePage.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSlider from '../components/home/HeroSlider';
 import AboutOverview from '../components/home/AboutOverview';
 import PillarsGrid from '../components/home/PillarsGrid';
@@ -7,9 +6,12 @@ import TargetClients from '../components/home/TargetClients';
 import { caseStudiesData } from '../data/caseStudiesData';
 import { brandConfig } from '../data/siteContent';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck, Sparkles, CheckCircle2, Globe2, Calendar, Clock, Zap } from 'lucide-react';
+import { WhatsAppIcon } from '../components/common/SocialIcons';
+import BookConsultationModal from '../components/common/BookConsultationModal';
 
 export default function HomePage() {
+  const [consultationOpen, setConsultationOpen] = useState(false);
   const featuredCases = caseStudiesData.slice(0, 3);
 
   return (
@@ -108,88 +110,141 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Executive Leadership Preview - Commented out as requested */}
-      {/*
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      {/* 6. International Clients & Global Delivery Spotlight */}
+      <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+        {/* Glow ambient */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2 block">
-              Meet Our Founders
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-              Engineers Leading From The Front
-            </h2>
-            <div className="w-16 h-1 bg-indigo-500 mx-auto rounded-full mb-4" />
-            <p className="text-slate-300 text-sm">
-              No middle management bureaucracy. When you partner with {brandConfig.companyName}, you collaborate directly with seasoned systems architects and engineering leaders.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {brandConfig.team.map((member, idx) => (
-              <div 
-                key={idx}
-                className="bg-white/5 backdrop-blur-md rounded-2xl p-7 border border-white/10 hover:border-white/25 transition-all text-center flex flex-col items-center"
-              >
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-400 mb-4 shadow-lg bg-slate-800">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=5c5de8&color=fff`;
-                    }}
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-0.5">{member.name}</h3>
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-3">
-                  {member.role}
-                </span>
-                <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                  {member.bio}
-                </p>
-                <a 
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-auto px-4 py-2 rounded-full text-xs font-bold text-white bg-white/10 hover:bg-indigo-600 transition-colors inline-flex items-center gap-2"
-                >
-                  Connect on LinkedIn &rarr;
-                </a>
+          <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            
+            <div className="max-w-2xl space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-indigo-400 bg-white/5 border border-white/10 shadow-2xs">
+                <Globe2 className="w-3.5 h-3.5" />
+                <span>Global Remote Delivery &bull; 14+ Countries</span>
               </div>
-            ))}
-          </div>
 
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug">
+                Building for US, UK, European &amp; Global Enterprises
+              </h2>
+
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Experience seamless 4 to 8 hours daily timezone overlap with US EST/PST, UK GMT, and European CET. Guaranteed 100% IP ownership, mutual NDA protection, and multi-currency billing (USD, GBP, EUR, AUD).
+              </p>
+
+              {/* Timezone Badges */}
+              <div className="flex flex-wrap gap-2 pt-1 text-xs font-semibold text-slate-300">
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">🇺🇸 🇨🇦 US EST &amp; PST Overlap</span>
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">🇬🇧 🇪🇺 UK &amp; European CET Overlap</span>
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">🇦🇺 🇳🇿 Australia AEST Overlap</span>
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">🇦🇪 🇸🇬 Gulf &amp; Singapore</span>
+              </div>
+            </div>
+
+            {/* Right Action Box */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0">
+              <Link
+                to="/international-clients"
+                className="px-7 py-3.5 rounded-full font-bold text-xs bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg transition-all text-center flex items-center justify-center gap-2"
+              >
+                <Globe2 className="w-4 h-4" />
+                <span>View International Clients Guide &rarr;</span>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setConsultationOpen(true)}
+                className="px-7 py-3.5 rounded-full font-bold text-xs bg-white text-slate-900 hover:bg-slate-100 shadow-md transition-all text-center flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Calendar className="w-4 h-4 text-indigo-600" />
+                <span>Book Global Consultation</span>
+              </button>
+
+              <a
+                href={brandConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="px-7 py-3 rounded-full font-bold text-xs bg-emerald-600/90 hover:bg-emerald-600 text-white shadow-md transition-all text-center flex items-center justify-center gap-2"
+              >
+                <WhatsAppIcon size={14} />
+                <span>WhatsApp Global Desk</span>
+              </a>
+            </div>
+
+          </div>
         </div>
       </section>
-      */}
 
-      {/* 7. Ready-to-Build CTA Strip */}
+      {/* 7. Ready-to-Build Conversion CTA Strip */}
       <section className="py-20 bg-gradient-to-r from-indigo-700 via-indigo-600 to-blue-600 text-white text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-indigo-200 bg-white/10 border border-white/15 mb-4 shadow-sm">
+            <Zap className="w-3.5 h-3.5 text-amber-300" />
+            <span>Fast-Track Engineering Discovery</span>
+          </div>
+
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">
             Ready to Engineer Your Modern Cloud or AI Architecture?
           </h2>
+
           <p className="text-base text-indigo-100 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Schedule an introductory technical consultation. We review your requirements, sign a mutual NDA, and deliver a detailed architecture blueprint within 48 hours.
+            Schedule a free 30-min technical consultation. We review your requirements, sign a mutual NDA, and deliver a detailed architecture blueprint within <strong>24 to 48 hours</strong>.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+
+          <div className="flex flex-wrap items-center justify-center gap-3.5 mb-6">
+            <button
+              type="button"
+              onClick={() => setConsultationOpen(true)}
+              className="px-8 py-4 rounded-full font-bold text-sm bg-white text-indigo-900 hover:bg-slate-100 shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 cursor-pointer"
+            >
+              <Calendar className="w-4 h-4 text-indigo-600" />
+              <span>Book a Free Consultation</span>
+            </button>
+
+            <a
+              href={brandConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="px-7 py-4 rounded-full font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-500 shadow-xl transition-all transform hover:-translate-y-1 flex items-center gap-2"
+            >
+              <WhatsAppIcon size={16} />
+              <span>WhatsApp Quick Chat (&lt; 15m)</span>
+            </a>
+
             <Link
               to="/contact"
-              className="px-8 py-4 rounded-full font-bold text-sm bg-white text-indigo-900 hover:bg-slate-100 shadow-2xl transition-all transform hover:-translate-y-1"
+              className="px-7 py-4 rounded-full font-bold text-sm text-white border border-white/30 hover:bg-white/10 transition-all flex items-center gap-2"
             >
-              Book Technical Consultation
-            </Link>
-            <Link
-              to="/careers"
-              className="px-8 py-4 rounded-full font-bold text-sm text-white border border-white/30 hover:bg-white/10 transition-all"
-            >
-              Hire Dedicated Engineering Pods
+              <span>Project Scoping Form</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+
+          {/* Response Commitment Microcopy */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-indigo-100 pt-2 border-t border-white/15 max-w-2xl mx-auto">
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-amber-300" />
+              <span>Guaranteed Response within 4 Hours</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
+              <span>Mutual NDA Guaranteed</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-sky-300" />
+              <span>100% Free Architecture Review</span>
+            </span>
+          </div>
+
         </div>
       </section>
+
+      {/* Free Consultation Booking Modal */}
+      <BookConsultationModal
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+        defaultTopic="Architecture Feasibility & System Engineering"
+      />
 
     </div>
   );
